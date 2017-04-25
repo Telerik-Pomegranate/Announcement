@@ -1,10 +1,12 @@
 //import Sammy from 'sammy';
 import 'jquery';
 import router from 'router';
-
+import firebaseDb from '../../database/firebas-databas';
 $(document).ready(function() {
     router.start();
-
+    /*firebaseDb.onAuthStateChanged(user => {
+        console.log(user.displayName)
+    })*/
 });
 
 

@@ -2,7 +2,7 @@
 
 import userModel from 'user-model';
 //import loadingScreen from '../assets/scripts/loading-screen';
-
+import loginLogout from 'login-logout';
 /*
 import htmlHandler from 'html-handler';
 import templateHandler from 'template-handler';
@@ -31,6 +31,7 @@ class AccountController {
     signIn(sammy) {
         let email = sammy.params.email;
         let password = sammy.params.password;
+        let username = sammy.params.username;
 
         userModel
             .signIn(email, password)
@@ -40,18 +41,8 @@ class AccountController {
             }).then(() => {
                 return new Promise(resolve => {
                     setTimeout(() => {
+                        loginLogout.login();
 
-                        let loginLogut = document.getElementsByClassName('pull-right')[0]
-
-                        let liElements = loginLogut.getElementsByTagName('li');
-                        let firstAnchor = liElements[0].getElementsByTagName('a');
-                        let secondAnchor = liElements[1].getElementsByTagName('a')
-                        firstAnchor[0].style.display = 'none';
-                        secondAnchor[0].style.display = 'none';
-                        let imgLogin = loginLogut.getElementsByTagName('img')[0];
-                        imgLogin.style.display = '';
-                        let logOutBtn = liElements[2].getElementsByTagName('a');
-                        logOutBtn[0].style.display = '';
                         sammy.redirect('#/home');
                         // loadingScreen.stop();
                         resolve();
@@ -91,19 +82,7 @@ class AccountController {
 
                     setTimeout(() => {
 
-
-
-                        let loginLogut = document.getElementsByClassName('pull-right')[0]
-
-                        let liElements = loginLogut.getElementsByTagName('li');
-                        let firstAnchor = liElements[0].getElementsByTagName('a');
-                        let secondAnchor = liElements[1].getElementsByTagName('a')
-                        firstAnchor[0].style.display = 'none';
-                        secondAnchor[0].style.display = 'none';
-                        let imgLogin = loginLogut.getElementsByTagName('img')[0];
-                        imgLogin.style.display = '';
-                        let logOutBtn = liElements[2].getElementsByTagName('a');
-                        logOutBtn[0].style.display = '';
+                        loginLogout.login();
                         sammy.redirect('#/home');
                         //  loadingScreen.stop();
                         resolve();
@@ -131,17 +110,7 @@ class AccountController {
             }).then(() => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        let loginLogut = document.getElementsByClassName('pull-right')[0]
-
-                        let liElements = loginLogut.getElementsByTagName('li');
-                        let firstAnchor = liElements[0].getElementsByTagName('a');
-                        let secondAnchor = liElements[1].getElementsByTagName('a')
-                        firstAnchor[0].style.display = '';
-                        secondAnchor[0].style.display = '';
-                        let imgLogin = loginLogut.getElementsByTagName('img')[0];
-                        imgLogin.style.display = 'none';
-                        let logOutBtn = liElements[2].getElementsByTagName('a');
-                        logOutBtn[0].style.display = 'none';
+                        loginLogout.logout();
                         sammy.redirect('#/home');
                         // loadingScreen.stop();
                         resolve();
