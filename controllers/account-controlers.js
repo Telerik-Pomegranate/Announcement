@@ -1,7 +1,7 @@
 /* globals Promise */
 
 import userModel from 'user-model';
-import loadingScreen from '../assets/scripts/loading-screen';
+//import loadingScreen from '../assets/scripts/loading-screen';
 
 /*
 import htmlHandler from 'html-handler';
@@ -18,14 +18,14 @@ class AccountController {
         let $warningContainer = $('.warning');
         $warningContainer.addClass('hide');
 
-        htmlHandler.setHtml('login');
+        //htmlHandler.setHtml('login');
     }
 
     loadSignupPage() {
         let $warningContainer = $('.warning');
         $warningContainer.addClass('hide');
 
-        htmlHandler.setHtml('register');
+        // htmlHandler.setHtml('register');
     }
 
     signIn(sammy) {
@@ -66,7 +66,7 @@ class AccountController {
                 $warningContainer.removeClass('hide');
 
                 let $dangerMessageContainer = $('#danger-message-container');
-                $dangerMessageContainer.html(message);
+                $dangerMessageContainer.html(message); //tuka setvam ot obekta det si vrushtam validatora
 
                 // errorLogger.push(`${code} - ${message}`);
             });

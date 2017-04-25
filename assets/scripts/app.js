@@ -1,8 +1,19 @@
+//import Sammy from 'sammy';
 import 'jquery';
+import router from 'router';
+
+$(document).ready(function() {
+    router.start();
+
+});
+
+
+
+/*import 'jquery';
 import Sammy from 'sammy';
 import templates from 'templates';
-import eventLoader from '../../views/helpers/event-loader';
-import accountController from '../../controllers/account-controlers';
+//import eventLoader from '../../views/helpers/event-loader';
+import accountController from 'accountController';
 //import firebaseModule from '../../config/firebase-config';
 var sammyApp = Sammy('#main', function() {
     this.get('/', function() {

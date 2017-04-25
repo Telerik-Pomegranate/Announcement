@@ -2,6 +2,7 @@ System.config({
     'transpiler': 'plugin-babel',
     'map': {
         'main': '../assets/scripts/app.js',
+        'router': '../config/sammy-config.js',
         'jquery': '../lib/scripts/bower_components/jquery/dist/jquery.js',
         'plugin-babel': '../lib/scripts/node_modules/systemjs-plugin-babel/plugin-babel.js',
         'systemjs-babel-build': '../lib/scripts/node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
@@ -17,6 +18,7 @@ System.config({
         'user-model': '../models/users-model.js',
         'loading-screen': '../assets/scripts/loading-screen.js',
         'error-logger': '../models/helpers/error-loger.js',
+        'accountController': '/../../controllers/account-controlers.js/',
     },
     //tuka poneje v node loaderite nakraq pri import i export ne se pishe .js puk i tuka intelisensa ne go slaga za da se znae che sa .js failove se pishe tuk 
     packages: {
