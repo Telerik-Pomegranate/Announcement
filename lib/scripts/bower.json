@@ -1,0 +1,26 @@
+{
+  "name": "lib",
+  "homepage": "https://github.com/dimitartalanov/javaScipt",
+  "authors": [
+    "dimitartalanov <d_talanov@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "handlebars": "^4.0.5",
+    "system.js": "^0.20.12",
+    "bootstrap": "^3.3.7",
+    "sammy": "^0.7.6",
+    "bootstrap-validator": "^0.11.9",
+    "firebase": "^3.8.0"
+  }
+}
