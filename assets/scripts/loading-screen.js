@@ -1,4 +1,4 @@
-const loadingScreen = (function() {
+/*const loadingScreen = (function() {
     let $body = $('body');
 
     function start() {
@@ -17,4 +17,4 @@ const loadingScreen = (function() {
     };
 }());
 
-export default loadingScreen;
+export default loadingScreen;*/
