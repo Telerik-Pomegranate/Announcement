@@ -1,4 +1,5 @@
 import items from 'templateDb';
+
 const templates = (function() {
     let cacheObj = {}; //for cache template
     function load(name) {
@@ -21,11 +22,11 @@ const templates = (function() {
         });
     }
 
-    function get() {
+    function get(itemsAnnoun) {
         //eto tuk get raboti s pormis dolu-v momenta e lokalno no v drug slochai towa shte e zaqwka kum servera
         var promise = new Promise(function(resolve, reject) {
-            resolve(items);
-        })
+            resolve(items[itemsAnnoun]);
+        });
         return promise;
     }
     //to sushtiq get no s ajax zaqvka
@@ -45,10 +46,10 @@ const templates = (function() {
          });
      }*/
 
-    function getById(id) {
+    function getById(id, itemsAnnoun) {
         id = +id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
         var promise = new Promise(function(resolve, reject) {
-            items.find(function(item) {
+            items[itemsAnnoun].find(function(item) {
                 if (item.id === id) {
                     resolve(item)
                 } else {
