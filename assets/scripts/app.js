@@ -7,6 +7,18 @@ $(document).ready(function() {
     /*firebaseDb.onAuthStateChanged(user => {
         console.log(user.displayName)
     })*/
+    //ako e realen survur koda taka se zapazwat da vidim za posle dali da gi ostavim
+    /*firebaseDb.onAuthStateChanged(user => {
+        if (user) {
+            
+            localStorage.setItem('username', user.displayName);
+            localStorage.setItem('userUid', user.uid);
+        } else {
+            
+            localStorage.setItem('username', null);
+            localStorage.setItem('userUid', null);
+        }
+    });*/
 });
 
 

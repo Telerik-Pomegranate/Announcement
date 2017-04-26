@@ -4,6 +4,8 @@ import templates from 'templates';
 //import eventLoader from '../../views/helpers/event-loader';
 import accountController from 'accountController';
 //import firebaseModule from '../../config/firebase-config';
+import templateDb from 'templateDb';
+import Handlebars from 'handlebars';
 const router = (function() {
     function start() {
         var sammyApp = Sammy('#main', function() {
@@ -25,7 +27,18 @@ const router = (function() {
                 //eventLoader.loginPageEvent('#main');
             });
             this.get('/homes', function() {
-                templates.load('homes').then(templateHTML => { $('#main').html(templateHTML); });
+                var items;
+                templateDb.get().then((res) => {
+                    items = res;
+                    //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
+                    return templates.load('homes'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+                }).then((templateHTML) => {
+                    var template = Handlebars.compile(templateHTML);
+                    $('#main').html(template({
+                        items
+                    }));
+                });
+                //templates.load('homes').then(templateHTML => { $('#main').html(templateHTML); });
                 // eventLoader.loadData('#main');
             });
             this.get('/cars', function() {
@@ -40,9 +53,19 @@ const router = (function() {
                 templates.load('contact').then(templateHTML => { $('#main').html(templateHTML); });
 
             });
-            this.get('/announcement', function() {
-                //    alert(this.params['id'])
-                templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
+            this.get('/homes/announcement/:id', function() {
+                var items;
+                templateDb.getById(this.params.id).then(function(res) {
+                    items = res;
+                    // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                    return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+                }).then((templateHTML) => {
+                    var template = Handlebars.compile(templateHTML);
+                    $('#main').html(template({
+                        // items
+                    }));
+                });
+                // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
 
             });
             this.post('#/login', accountController.signIn);

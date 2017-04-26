@@ -20,6 +20,7 @@ System.config({
         'error-logger': '../models/helpers/error-loger.js',
         'accountController': '/../../controllers/account-controlers.js/',
         'login-logout': '../assets/scripts/login-logout.js',
+        'templateDb': '../database/template-db.js',
     },
     //tuka poneje v node loaderite nakraq pri import i export ne se pishe .js puk i tuka intelisensa ne go slaga za da se znae che sa .js failove se pishe tuk 
     packages: {
