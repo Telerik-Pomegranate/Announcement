@@ -2,8 +2,29 @@
 import 'jquery';
 import router from 'router';
 import firebaseDb from '../../database/firebas-databas';
+import firebaseModule from 'firebase-config';
 $(document).ready(function() {
     router.start();
+
+    /* var homes = firebaseModule.database.child('homes'); //pravq si papka homes
+
+     var msgRef = homes.push([{ //taka poskam wutre masiwa 0,1,2]);*/
+
+    /* msgRef.child('3').set({ pesho: 'pesho' }) //-taka dobavqm nowi s 3-ti nomer kato go vzema ot publikowanata forma-towa 3 e wse edno id-to
+
+     msgRef.orderByKey().limitToLast(1).on('child_added', function(snap) { //taka mi dawa wsichki ot poslednoto 0,1,2,3 ako napisha 1 vmesto 100 shet dade poslednoto
+         console.log('added ', snap.val())
+     })
+     msgRef.on('child_removed', function(snap) { //towa i dolnoto sa pod noejs ako se promenq w samata baza ili se trie ti pokazwa
+         console.log('removed ', snap.val())
+     })
+     msgRef.on('child_changed', function(snap) {
+         console.log('changed ', snap.val())
+     })
+     msgRef.on('value', function(snap) {
+         console.log('value ', snap.val())
+     })
+     msgRef.child(3).remove(); //taka spored id-to go trie -ako e bez child iztrivwa wsichki vutre-govorim samo za poslednite ne tezi det sa se obrazuvali ot refresh-kakto i gore dawa samo ot poslednite*/
     /*firebaseDb.onAuthStateChanged(user => {
         console.log(user.displayName)
     })*/
@@ -19,6 +40,34 @@ $(document).ready(function() {
             localStorage.setItem('userUid', null);
         }
     });*/
+
+    //taka da gi vzimam ot bazata
+    /* var ref = firebaseModule.database;
+     ref.on('value', gotData, errData);
+
+     function gotData(data) {
+
+         let objHomes = {};
+         var scores = data.val();
+         console.log(scores)
+         var keys = scores['pets'];
+         console.log(keys)*/
+
+    /* for (let sc in keys) {
+         objHomes[sc] = keys[sc];
+
+         console.log(keys[sc])
+     }*/
+    //    console.log('objHome ', objHomes)
+    /*     //  return objHomes
+     }
+
+
+     function errData(data) {
+         console.log(data)
+     }*/
+
+
 });
 
 

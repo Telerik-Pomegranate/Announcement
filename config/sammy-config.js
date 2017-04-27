@@ -4,7 +4,7 @@ import templates from 'templates';
 //import eventLoader from '../../views/helpers/event-loader';
 import accountController from 'accountController';
 //import firebaseModule from '../../config/firebase-config';
-import templateDb from 'templateDb';
+//import templateDb from 'templateDb';
 import Handlebars from 'handlebars';
 const router = (function() {
     function start() {
@@ -28,8 +28,8 @@ const router = (function() {
             });
             this.get('/homes', function() {
                 var items;
-                templates.get('itemsHomes').then((res) => {
-                    items = res;
+                templates.getItems().then((res) => {
+                    items = res.homes;
                     //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
                     return templates.load('homes'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
@@ -43,8 +43,8 @@ const router = (function() {
             });
             this.get('/cars', function() {
                 var items;
-                templates.get('itemsCars').then((res) => {
-                    items = res;
+                templates.getItems().then((res) => {
+                    items = res.cars;
                     //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
                     return templates.load('cars'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
@@ -56,10 +56,22 @@ const router = (function() {
                 //templates.load('cars').then(templateHTML => { $('#main').html(templateHTML); });
 
             });
+            /*  this.get('/pets', function() {
+                  var items;
+                  templates.get('itemsPets').then((res) => {
+                      items = res;
+                      //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
+                      return templates.load('pets'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+                  }).then((templateHTML) => {
+                      var template = Handlebars.compile(templateHTML);
+                      $('#main').html(template({
+                          items
+                      }));
+                  });*/
             this.get('/pets', function() {
                 var items;
-                templates.get('itemsPets').then((res) => {
-                    items = res;
+                templates.getItems().then((res) => {
+                    items = res.pets;
                     //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
                     return templates.load('pets'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
@@ -77,7 +89,7 @@ const router = (function() {
             });
             this.get('/homes/announcement/:id', function() {
                 var items;
-                templates.getById(this.params.id, 'itemsHomes').then(function(res) {
+                templates.getById(this.params.id, 'homes').then(function(res) {
                     items = res;
                     // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
@@ -92,7 +104,7 @@ const router = (function() {
             });
             this.get('/cars/announcement/:id', function() {
                 var items;
-                templates.getById(this.params.id, 'itemsCars').then(function(res) {
+                templates.getById(this.params.id, 'cars').then(function(res) {
                     items = res;
                     // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
@@ -107,7 +119,7 @@ const router = (function() {
             });
             this.get('/pets/announcement/:id', function() {
                 var items;
-                templates.getById(this.params.id, 'itemsPets').then(function(res) {
+                templates.getById(this.params.id, 'pets').then(function(res) {
                     items = res;
                     // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim

@@ -1,5 +1,5 @@
-import items from 'templateDb';
-
+//import items from 'templateDb';
+import firebaseModule from 'firebase-config';
 const templates = (function() {
     let cacheObj = {}; //for cache template
     function load(name) {
@@ -22,13 +22,13 @@ const templates = (function() {
         });
     }
 
-    function get(itemsAnnoun) {
-        //eto tuk get raboti s pormis dolu-v momenta e lokalno no v drug slochai towa shte e zaqwka kum servera
-        var promise = new Promise(function(resolve, reject) {
-            resolve(items[itemsAnnoun]);
-        });
-        return promise;
-    }
+    /*    function get(itemsAnnoun) {
+            //eto tuk get raboti s pormis dolu-v momenta e lokalno no v drug slochai towa shte e zaqwka kum servera
+            var promise = new Promise(function(resolve, reject) {
+                resolve(items[itemsAnnoun]);
+            });
+            return promise;
+        }*/
     //to sushtiq get no s ajax zaqvka
     /* function getAjax() {//towa she mi e s zaqwkite kum syrvyra
          var promise = new Promise(function(resolve, reject) {
@@ -45,16 +45,39 @@ const templates = (function() {
              })
          });
      }*/
+    function getItems() {
+        var ref = firebaseModule.database; //tuka sa dwa varianta na wzimane-i otdolu
+        //var homes = firebaseModule.database.child(`homes/`);
+
+        let promis = new Promise((resolve, reject) => {
+            ref.on('value', function(snap) {
+                if (snap.val() == null) {
+                    reject(null);
+                } else {
+                    var items = {
+                        pets: snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
+                        homes: snap.val().homes['-KikZyXDlybDnC6Ulsy4'],
+                        cars: snap.val().cars['-KikZyXO22U5zrl4jzH6']
+                    };
+
+                    resolve(items);
+                }
+            });
+        });
+        return promis;
+    }
 
     function getById(id, itemsAnnoun) {
         id = +id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
         var promise = new Promise(function(resolve, reject) {
-            items[itemsAnnoun].find(function(item) {
-                if (item.id === id) {
-                    resolve(item)
-                } else {
-                    reject: 'Nmq takova id'
-                }
+            getItems().then(res => {
+                res[itemsAnnoun].find(function(item) {
+                    if (item.id === id) {
+                        resolve(item)
+                    } else {
+                        reject: 'Nmq takova id'
+                    }
+                })
             });
         });
         return promise;
@@ -71,8 +94,9 @@ const templates = (function() {
      }*/
     return {
         load,
-        get,
+        // get,
         getById,
+        getItems
         //save
     };
 }());
