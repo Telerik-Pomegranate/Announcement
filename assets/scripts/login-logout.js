@@ -15,14 +15,16 @@ let loginLogout = (function() {
         });*/
         let loginLogut = document.getElementsByClassName('pull-right')[0]
         let liElements = loginLogut.getElementsByTagName('li');
-        let firstAnchor = liElements[1].getElementsByTagName('a');
-        let secondAnchor = liElements[2].getElementsByTagName('a')
+        let firstAnchor = liElements[2].getElementsByTagName('a');
+        let secondAnchor = liElements[3].getElementsByTagName('a')
         firstAnchor[0].style.display = 'none';
         secondAnchor[0].style.display = 'none';
-        let imgLogin = liElements[0].getElementsByTagName('img')[0];
+        let imgLogin = liElements[1].getElementsByTagName('img')[0];
         imgLogin.style.display = '';
-        let logOutBtn = liElements[3].getElementsByTagName('a');
+        let logOutBtn = liElements[4].getElementsByTagName('a');
         logOutBtn[0].style.display = '';
+        let publicAnnouncement = liElements[0].getElementsByTagName('a');
+        publicAnnouncement[0].style.display = '';
         /* let loginLogut = document.getElementsByClassName('pull-right')[0]
          let liElements = loginLogut.getElementsByTagName('li');
          let firstAnchor = liElements[1].getElementsByTagName('a');
@@ -39,15 +41,16 @@ let loginLogout = (function() {
         let loginLogut = document.getElementsByClassName('pull-right')[0]
 
         let liElements = loginLogut.getElementsByTagName('li');
-        let firstAnchor = liElements[1].getElementsByTagName('a');
-        let secondAnchor = liElements[2].getElementsByTagName('a')
+        let firstAnchor = liElements[2].getElementsByTagName('a');
+        let secondAnchor = liElements[3].getElementsByTagName('a')
         firstAnchor[0].style.display = '';
         secondAnchor[0].style.display = '';
-        let imgLogin = liElements[0].getElementsByTagName('img')[0];
+        let imgLogin = liElements[1].getElementsByTagName('img')[0];
         imgLogin.style.display = 'none';
-        let logOutBtn = liElements[3].getElementsByTagName('a');
+        let logOutBtn = liElements[4].getElementsByTagName('a');
         logOutBtn[0].style.display = 'none';
-
+        let publicAnnouncement = liElements[0].getElementsByTagName('a');
+        publicAnnouncement[0].style.display = 'none';
     }
     return { login, logout };
 }());

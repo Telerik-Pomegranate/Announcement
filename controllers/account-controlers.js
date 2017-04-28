@@ -103,6 +103,7 @@ class AccountController {
     }
 
     signOut(sammy) {
+        console.log(sammy)
         userModel
             .signOut()
             .then(() => {

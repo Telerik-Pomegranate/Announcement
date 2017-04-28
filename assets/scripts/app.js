@@ -5,6 +5,32 @@ import firebaseDb from '../../database/firebas-databas';
 import firebaseModule from 'firebase-config';
 $(document).ready(function() {
     router.start();
+/*    var homes = firebaseModule.database.child('homes')
+    var msgRef = homes.push([{
+            'url': 'https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg',
+            'head': 'Sale hose',
+            'price': '12345 $',
+            'subheading': '2 bed end terrace house for sale',
+            'body': 'Summary Positioned within a no through road in a popular residential area is this spacious character cottage which has been fully renovated to a high standard by the current owner. The property is only 0.8 miles to Maidenhead town centre and mainline railway station (Future Crossrail).',
+            id: 1
+        },
+        {
+            'url': 'https://static.pexels.com/photos/261187/pexels-photo-261187.jpeg',
+            'head': 'Sale beauty mouse',
+            'price': '5435 $',
+            'subheading': '2 bed end terrace house for sale',
+            'body': 'Summary Positioned within a no through road in a popular residential area is this spacious character cottage which has been fully renovated to a high standard by the current owner. The property is only 0.8 miles to Maidenhead town centre and mainline railway station (Future Crossrail).',
+            'id': 2
+        },
+        {
+            'url': 'https://static.pexels.com/photos/259597/pexels-photo-259597.jpeg',
+            'head': 'Sale small house',
+            'price': '187945 $',
+            'subheading': '2 bed end terrace house for sale',
+            'body': 'Summary Positioned within a no through road in a popular residential area is this spacious character cottage which has been fully renovated to a high standard by the current owner. The property is only 0.8 miles to Maidenhead town centre and mainline railway station (Future Crossrail).',
+            'id': 3
+        }
+    ]);*/
 
     /* var homes = firebaseModule.database.child('homes'); //pravq si papka homes
 

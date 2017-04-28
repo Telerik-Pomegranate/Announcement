@@ -56,7 +56,7 @@ const templates = (function() {
                 } else {
                     var items = {
                         pets: snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
-                        homes: snap.val().homes['-KikZyXDlybDnC6Ulsy4'],
+                        homes: snap.val().homes['-Kip1vzK1uykpHETuVEC'],
                         cars: snap.val().cars['-KikZyXO22U5zrl4jzH6']
                     };
 

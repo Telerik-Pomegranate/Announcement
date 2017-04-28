@@ -26,6 +26,10 @@ const router = (function() {
                 templates.load('register').then(templateHTML => { $('#main').html(templateHTML); });
                 //eventLoader.loginPageEvent('#main');
             });
+            this.get('/publicannoun', function() {
+                templates.load('publicannoun').then(templateHTML => { $('#main').html(templateHTML); });
+                //eventLoader.loginPageEvent('#main');
+            });
             this.get('/homes', function() {
                 var items;
                 templates.getItems().then((res) => {
@@ -89,48 +93,83 @@ const router = (function() {
             });
             this.get('/homes/announcement/:id', function() {
                 var items;
-                templates.getById(this.params.id, 'homes').then(function(res) {
-                    items = res;
-                    // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                var id;
+                templates.getItems().then((res) => {
+                    items = res.homes;
+                    return templates.getById(this.params.id, 'homes')
+                }).then(function(res) {
+                    id = res;
+                    console.log(id)
+                        // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
                     var template = Handlebars.compile(templateHTML);
                     $('#main').html(template({
-                        // items
+                        id
                     }));
                 });
                 // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
 
             });
             this.get('/cars/announcement/:id', function() {
+                /* var items;
+                 templates.getById(this.params.id, 'cars').then(function(res) {
+                     items = res;
+                     // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+                 }).then((templateHTML) => {
+                     var template = Handlebars.compile(templateHTML);
+                     $('#main').html(template({
+                         // items
+                     }));
+                 });*/
+                // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
                 var items;
-                templates.getById(this.params.id, 'cars').then(function(res) {
-                    items = res;
-                    // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                var id;
+                templates.getItems().then((res) => {
+                    items = res.homes;
+                    return templates.getById(this.params.id, 'cars')
+                }).then(function(res) {
+                    id = res;
+                    console.log(id)
+                        // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
                     var template = Handlebars.compile(templateHTML);
                     $('#main').html(template({
-                        // items
+                        id
                     }));
                 });
-                // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
-
             });
             this.get('/pets/announcement/:id', function() {
+                /* var items;
+                 templates.getById(this.params.id, 'pets').then(function(res) {
+                     items = res;
+                     // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+                 }).then((templateHTML) => {
+                     var template = Handlebars.compile(templateHTML);
+                     $('#main').html(template({
+                         // items
+                     }));
+                 });*/
+                // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
                 var items;
-                templates.getById(this.params.id, 'pets').then(function(res) {
-                    items = res;
-                    // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
+                var id;
+                templates.getItems().then((res) => {
+                    items = res.homes;
+                    return templates.getById(this.params.id, 'pets')
+                }).then(function(res) {
+                    id = res;
+                    console.log(id)
+                        // $('<h1 />').html(res.name).appendTo('#content').html();--eto taka beshe samo no poneje ne iztrivahse staroto apendato zatowa kato dolu   
                     return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
                 }).then((templateHTML) => {
                     var template = Handlebars.compile(templateHTML);
                     $('#main').html(template({
-                        // items
+                        id
                     }));
                 });
-                // templates.load('announcement').then(templateHTML => { $('#main').html(templateHTML); });
-
             });
             this.post('#/login', accountController.signIn);
             this.post('#/register', accountController.signUp);

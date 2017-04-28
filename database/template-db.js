@@ -28,33 +28,33 @@
 
 
 
-   /*  var ref = firebaseModule.database; //tuka sa dwa varianta na wzimane-i otdolu
-     //var homes = firebaseModule.database.child(`homes/`);
+     /*  var ref = firebaseModule.database; //tuka sa dwa varianta na wzimane-i otdolu
+       //var homes = firebaseModule.database.child(`homes/`);
 
-     let promis = new Promise((resolve, reject) => {
-         ref.on('value', function(snap) {
-             if (snap.val() == null) {
-                 reject(null);
-             } else {
-                 var items = {
-                     pets: snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
-                     homes: snap.val().homes['-KikZyXDlybDnC6Ulsy4'],
-                     cars: snap.val().cars['-KikZyXO22U5zrl4jzH6']
-                 };
+       let promis = new Promise((resolve, reject) => {
+           ref.on('value', function(snap) {
+               if (snap.val() == null) {
+                   reject(null);
+               } else {
+                   var items = {
+                       pets: snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
+                       homes: snap.val().homes['-KikZyXDlybDnC6Ulsy4'],
+                       cars: snap.val().cars['-KikZyXO22U5zrl4jzH6']
+                   };
 
-                 resolve(items);
-             }
-         });
-     });
+                   resolve(items);
+               }
+           });
+       });
 
-     promis.then(items => {
+       promis.then(items => {
 
-          console.log(items.pets[0])
-     })
-     console.log()*/
-         /* let homes = promis.then(items.homes[0]);
-          let cars = promis.then(items.cars[0]);
-          console.log(pets, cars, homes)*/
+            console.log(items.pets[0])
+       })
+       console.log()*/
+     /* let homes = promis.then(items.homes[0]);
+      let cars = promis.then(items.cars[0]);
+      console.log(pets, cars, homes)*/
 
      let itemsPets = {};
 
