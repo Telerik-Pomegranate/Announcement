@@ -54,10 +54,26 @@ const templates = (function() {
                 if (snap.val() == null) {
                     reject(null);
                 } else {
+                    let petsArr = [];
+                    let carsArr = [];
+                    let homesArr = [];
+                    for (let i in snap.val().pets) {
+                        // console.log('value ', snap.val())
+                        petsArr.push(snap.val().pets[i]);
+                    }
+                    for (let i in snap.val().cars) {
+                        // console.log('value ', snap.val())
+                        carsArr.push(snap.val().cars[i]);
+                    }
+                    for (let i in snap.val().homes) {
+                        // console.log('value ', snap.val())
+                        homesArr.push(snap.val().homes[i]);
+                    }
+                   
                     var items = {
-                        pets: snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
-                        homes: snap.val().homes['-Kip1vzK1uykpHETuVEC'],
-                        cars: snap.val().cars['-KikZyXO22U5zrl4jzH6']
+                        pets: petsArr, //snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
+                        homes: homesArr, //snap.val().homes['-Kip1vzK1uykpHETuVEC'],
+                        cars: carsArr //snap.val().cars['-KikZyXO22U5zrl4jzH6']
                     };
 
                     resolve(items);
@@ -68,7 +84,7 @@ const templates = (function() {
     }
 
     function getById(id, itemsAnnoun) {
-        id = +id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
+        id = id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
         var promise = new Promise(function(resolve, reject) {
             getItems().then(res => {
                 res[itemsAnnoun].find(function(item) {

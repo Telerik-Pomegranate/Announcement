@@ -30,19 +30,24 @@ $(document).ready(function(e) {
         if (!categori) {
             alert('Please choose category from filter by')
         } else {
+            concept = concept.toLowerCase();
+            msgRef = firebase.database().ref().child(concept); //.child(idFromCategoryInFirebase)
+            var homeKey = msgRef.push();
+            var key = homeKey.key;
             let objAnnoun = {
                 'url': url,
                 'head': heading,
                 'price': price + ' $',
                 'subheading': subHeading,
                 'body': body,
-                'id': id
+                'gsm': mobile,
+                'id': key
             };
             let idFromCategoryInFirebase;
             concept = concept.toLowerCase();
-            if (concept.toLowerCase() === 'pets') { idFromCategoryInFirebase = '-KikZyXR-KSWMlLJbzLL' }
-            if (concept.toLowerCase() === 'homes') { idFromCategoryInFirebase = '-Kip1vzK1uykpHETuVEC' }
-            if (concept.toLowerCase() === 'cars') { idFromCategoryInFirebase = '-KikZyXO22U5zrl4jzH6' }
+            /* if (concept.toLowerCase() === 'pets') { idFromCategoryInFirebase = '-KikZyXR-KSWMlLJbzLL' }
+             if (concept.toLowerCase() === 'homes') { idFromCategoryInFirebase = '-Kip1vzK1uykpHETuVEC' }
+             if (concept.toLowerCase() === 'cars') { idFromCategoryInFirebase = '-KikZyXO22U5zrl4jzH6' }*/
             // var publicInCategoryName = firebase.database().ref().child(concept).setValue(objAnnoun);
             ////publicInCategoryName.set(objAnnoun) //child(idFromCategoryInFirebase);
             // publicInCategoryName.setValue(objAnnoun)
@@ -50,8 +55,7 @@ $(document).ready(function(e) {
             /* var updates = {};
              updates[`/${concept}/` + idFromCategoryInFirebase] = objAnnoun;
              firebase.database().ref().update(updates);*/
-            msgRef = firebase.database().ref().child(concept).child(idFromCategoryInFirebase)
-            msgRef.child(id).set(objAnnoun)
+            homeKey.set(objAnnoun);
             alert('Success')
             $('#heading').val('');
             $('#subheading').val('');
