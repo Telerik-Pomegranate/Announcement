@@ -1,17 +1,9 @@
 $(document).ready(function(e) {
-
-    let currId = 1;
     let concept;
-
-    function creatId() {
-        let id = currId + 3;
-        currId += 1;
-        return id;
-    };
     $('.search-panel .dropdown-menu').filter('.publicannoun').find('a').click(function(e) {
 
-        e.preventDefault();
-        var param = $(this).attr("href").replace("#", "");
+        // e.preventDefault();
+        var param = $(this).attr("href"); //.replace("#", "");
 
         concept = $(this).text();
         $('.search-panel span#search').text(concept);
@@ -25,7 +17,7 @@ $(document).ready(function(e) {
         let price = $('#price').val();
         let body = $('#textannoun').val();
         let url = $('#url').val();
-        let id = creatId();
+        // let id = creatId();
         let categori = concept;
         if (!categori) {
             alert('Please choose category from filter by')
@@ -63,7 +55,9 @@ $(document).ready(function(e) {
             $('#price').val('');
             $('#textannoun').val('');
             $('#url').val('');
+            // $(this).attr('href', `#/${concept.toLowerCase()}`);
         }
-
+        window.location.href = `#/${concept.toLowerCase()}`;
     });
+
 });

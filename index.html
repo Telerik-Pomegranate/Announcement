@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/shop-homepage.css"></link>
     <link rel="stylesheet" href="./assets/css/contact-form.css"></link>
     <link rel="stylesheet" href="./assets/css/login-register.css"></link>
-
+    <link rel="icon" type="image/png" sizes="32x32" href="./ms-icon-144x144.png">
     <style>
         body {
             background-image: url('assets/img/Navy-blue-shines-simple-background.jpg')
@@ -21,91 +21,95 @@
             min-height: 768px;
             height: 100%;
         }
+        /* img {
+            width: auto;
+            height: auto;
+        }*/
     </style>
     <!--    <link rel="stylesheet" href="./assets/css/shop-homepage.css"></link>-->
     <title>Document</title>
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>-->
-                    <a class="navbar-brand" href="#/home">Home</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#/contact">Contact</a>
-                        </li>
-                    </ul>
+                <a class="navbar-brand" href="#/home">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/contact">Contact</a>
+                    </li>
+                </ul>
 
-                    <div class="col-xs-8" style='width:40%;padding-top: 10px;'>
-                        <div class="input-group" style="left:200px;opacity:0.8">
-                            <div class="input-group-btn search-panel">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <div class="col-xs-8" style='width:40%;padding-top: 10px;'>
+                    <div class="input-group" style="left:200px;opacity:0.8">
+                        <div class="input-group-btn search-panel">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     	<span id="search_concept">Filter by</span> <span class="caret"></span>
                     </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#/homes">Homes</a></li>
-                                    <li><a href="#/cars">Cars</a></li>
-                                    <li><a href="#/pets">Pets</a></li>
-                                    <!--  <li class="divider"></li>-->
-                                    <!-- <li><a href="#all">Anything</a></li>-->
-                                </ul>
-                            </div>
-                            <input type="hidden" name="search_param" value="all" id="search_param">
-                            <input type="text" class="form-control" name="x" placeholder="Search term...">
-                            <span class="input-group-btn">
-                    <button class="btn btn-default searc-btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                            </span>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#/homes">Homes</a></li>
+                                <li><a href="#/cars">Cars</a></li>
+                                <li><a href="#/pets">Pets</a></li>
+                                <!--  <li class="divider"></li>-->
+                                <!-- <li><a href="#all">Anything</a></li>-->
+                            </ul>
                         </div>
+                        <input type="hidden" name="search_param" value="all" id="search_param">
+                        <input type="text" class="form-control" name="x" placeholder="Search term...">
+                        <span class="input-group-btn">
+                    <button class="btn btn-default searc-btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
                     </div>
-
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a href="#/publicannoun" style="display:none">Public announcement</a></li>
-                        <li>
-                            <img src="./assets/img/iHq9_qcq.png" height="30px" width="30px" style="display:none; margin-top:10px"><img></li>
-                        <li><a href="#/register">Register</a></li>
-                        <li><a href="#/login">Login</a></li>
-
-                        <li><a style="display:none" href="#/logout">Logout</a></li>
-                    </ul>
                 </div>
 
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#/publicannoun" style="display:none">Public announcement</a></li>
+                    <li>
+                        <img src="./assets/img/iHq9_qcq.png" height="30px" width="30px" style="display:none; margin-top:10px"><img></li>
+                    <li><a href="#/register">Register</a></li>
+                    <li><a href="#/login">Login</a></li>
 
-                <!-- /.navbar-collapse -->
+                    <li><a style="display:none" href="#/logout">Logout</a></li>
+                </ul>
             </div>
 
-            <!-- /.container -->
-        </nav>
+
+            <!-- /.navbar-collapse -->
+        </div>
+
+        <!-- /.container -->
+    </nav>
     </div>
     <div id="main"></div>
 
     <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
     <script>
         /*  // Initialize Firebase
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        //(function firebase() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        var config = {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            apiKey: "AIzaSyCO5M1SvfgnogVLmYnUxPaBD3e0_5hD7nk",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            authDomain: "shops-b5548.firebaseapp.com",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            databaseURL: "https://shops-b5548.firebaseio.com",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            projectId: "shops-b5548",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            storageBucket: "shops-b5548.appspot.com",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            messagingSenderId: "32802370058"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        firebase.initializeApp(config);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        const database = firebase.database().ref();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        const auth = firebase.auth();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                //(function firebase() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                var config = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    apiKey: "AIzaSyCO5M1SvfgnogVLmYnUxPaBD3e0_5hD7nk",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    authDomain: "shops-b5548.firebaseapp.com",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    databaseURL: "https://shops-b5548.firebaseio.com",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    projectId: "shops-b5548",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    storageBucket: "shops-b5548.appspot.com",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    messagingSenderId: "32802370058"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                };
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                firebase.initializeApp(config);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const database = firebase.database().ref();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const auth = firebase.auth();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
         /*  return {
               database,
               auth
@@ -122,10 +126,8 @@
     <script src="./config/system-config.js"></script>
     <script src="./lib/scripts/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./assets/scripts/script-contact-form.js"></script>
+    <!-- <script src="./config/sammy-config.js"></script>-->
     <script src="./assets/scripts/searchNavBar.js"></script>
-    <!--<script src="./config/sammy-config.js"></script>-->
-
-
 
 </body>
 
