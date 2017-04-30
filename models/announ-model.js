@@ -36,7 +36,7 @@ class AnnounModel {
         });
         return promis;
     }
-    function getById(id, itemsAnnoun) {
+    getById(id, itemsAnnoun) {
         id = id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
         var promise = new Promise(function(resolve, reject) {
             getItems().then(res => {
@@ -53,19 +53,18 @@ class AnnounModel {
     }
 
     saveAnnoun(category, url, heading, price, subHeading, body, mobile, key) {
-            var categoryRef = firebaseModule.database().ref().child(category);
-            var homeKey = categoryRef.push();
-            var key = homeKey.key;
-            homeKey.set({
-                'url': url,
-                'head': heading,
-                'price': price + ' $',
-                'subheading': subHeading,
-                'body': body,
-                'gsm': mobile,
-                'id': key
-            });
-        
+        var categoryRef = firebaseModule.database().ref().child(category);
+        var homeKey = categoryRef.push();
+        var key = homeKey.key;
+        homeKey.set({
+            'url': url,
+            'head': heading,
+            'price': price + ' $',
+            'subheading': subHeading,
+            'body': body,
+            'gsm': mobile,
+            'id': key
+        });
     }
 }
 

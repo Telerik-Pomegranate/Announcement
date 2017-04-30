@@ -10,7 +10,6 @@ System.config({
         'sammy': '../lib/scripts/bower_components/sammy/lib/sammy.js',
         'handlebars': '../lib/scripts/bower_components/handlebars/handlebars.js',
         'templates': '../views/helpers/templates.js',
-        //'script-contact-form': '../assets/scripts/script-contact-form.js'
         'validator': '../models/helpers/validators.js',
         'encryptor': '../models/helpers/encryptors.js',
         'firebase-database': '../database/firebas-databas.js',
@@ -19,8 +18,8 @@ System.config({
         'announ-model': '../models/announ-model.js',
         'loading-screen': '../assets/scripts/loading-screen.js',
         'error-logger': '../models/helpers/error-loger.js',
-        'accountController': '/../../controllers/account-controlers.js/',
-        'announController': '/../../controllers/announ-controlers.js/',
+        'accountController': '../controllers/account-controlers.js',
+        'announController': '../controllers/announ-controlers.js',
         'login-logout': '../assets/scripts/login-logout.js',
         'templateDb': '../database/template-db.js',
     },
