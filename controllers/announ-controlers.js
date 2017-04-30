@@ -1,4 +1,6 @@
 import announModel from 'announ-model';
+import templates from 'templates';
+import Handlebars from 'handlebars';
 
 class AnnounController {
     allItems(category) {
