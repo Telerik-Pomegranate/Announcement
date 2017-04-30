@@ -7,7 +7,7 @@ import Handlebars from 'handlebars';
 
 const router = (function() {
     function start() {
-        var sammyApp = Sammy('#main', function() {
+        let sammyApp = Sammy('#main', function() {
             this.get('/', function() {
                 this.redirect('#/');
             });

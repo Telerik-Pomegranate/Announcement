@@ -16,14 +16,12 @@ System.config({
         'firebase-config': '../config/firebase-config.js',
         'user-model': '../models/users-model.js',
         'announ-model': '../models/announ-model.js',
-        'loading-screen': '../assets/scripts/loading-screen.js',
-        'error-logger': '../models/helpers/error-loger.js',
         'accountController': '../controllers/account-controlers.js',
         'announController': '../controllers/announ-controlers.js',
         'login-logout': '../assets/scripts/login-logout.js',
-        'templateDb': '../database/template-db.js',
+        'search':'../assets/scripts/searchNavBar.js',
+        'public-announ':'../assets/scripts/publicannoun.js',
     },
-    //tuka poneje v node loaderite nakraq pri import i export ne se pishe .js puk i tuka intelisensa ne go slaga za da se znae che sa .js failove se pishe tuk 
     packages: {
         '/': {
             defaultExtension: 'js'

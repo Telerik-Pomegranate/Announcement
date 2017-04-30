@@ -24,7 +24,7 @@ class AnnounModel {
                         homesArr.push(snap.val().homes[i]);
                     }
 
-                    var items = {
+                    let items = {
                         pets: petsArr, //snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
                         homes: homesArr, //snap.val().homes['-Kip1vzK1uykpHETuVEC'],
                         cars: carsArr //snap.val().cars['-KikZyXO22U5zrl4jzH6']
@@ -40,7 +40,7 @@ class AnnounModel {
     getById(id, itemsAnnoun) {
         id = id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
         let getItems = this.getItems();
-        var promise = new Promise(function(resolve, reject) {
+        let promise = new Promise(function(resolve, reject) {
             getItems.then(res => {
                 res[itemsAnnoun].find(function(item) {
                     if (item.id === id) {
@@ -55,8 +55,8 @@ class AnnounModel {
     }
 
     saveAnnoun(category, url, heading, price, subHeading, body, mobile, key) {
-        var categoryRef = firebaseModule.database().ref().child(category);
-        var homeKey = categoryRef.push();
+        let categoryRef = firebaseModule.database().ref().child(category);
+        let homeKey = categoryRef.push();
         var key = homeKey.key;
         homeKey.set({
             'url': url,

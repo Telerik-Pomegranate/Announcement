@@ -1,5 +1,4 @@
 import firebaseDb from 'firebase-database';
-
 import validator from 'validator';
 import encryptor from 'encryptor';
 
