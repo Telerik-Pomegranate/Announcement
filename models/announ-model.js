@@ -23,7 +23,7 @@ class AnnounModel {
                         // console.log('value ', snap.val())
                         homesArr.push(snap.val().homes[i]);
                     }
-                   
+
                     var items = {
                         pets: petsArr, //snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
                         homes: homesArr, //snap.val().homes['-Kip1vzK1uykpHETuVEC'],
@@ -36,10 +36,12 @@ class AnnounModel {
         });
         return promis;
     }
+
     getById(id, itemsAnnoun) {
         id = id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
+        let getItems = this.getItems();
         var promise = new Promise(function(resolve, reject) {
-            getItems().then(res => {
+            getItems.then(res => {
                 res[itemsAnnoun].find(function(item) {
                     if (item.id === id) {
                         resolve(item)

@@ -39,13 +39,13 @@ const router = (function() {
                 announController.allItems('pets')
             });
             this.get('/homes/announcement/:id', function() {
-                announController.getAnnoun('homes')
+                announController.getAnnoun('homes', this.params.id)
             });
             this.get('/cars/announcement/:id', function() {
-                announController.getAnnoun('cars')
+                announController.getAnnoun('cars', this.params.id)
             });
             this.get('/pets/announcement/:id', function() {
-                announController.getAnnoun('pets')
+                announController.getAnnoun('pets', this.params.id)
             });
             this.post('#/login', accountController.signIn);
             this.post('#/register', accountController.signUp);

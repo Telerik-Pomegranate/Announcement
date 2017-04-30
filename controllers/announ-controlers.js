@@ -6,9 +6,9 @@ class AnnounController {
     allItems(category) {
         var items;
         announModel.getItems().then((res) => {
-           items = res[category];
-           //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
-           return templates.load(category); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+            items = res[category];
+            //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
+            return templates.load(category); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
         }).then((templateHTML) => {
             var template = Handlebars.compile(templateHTML);
             $('#main').html(template({
@@ -16,14 +16,15 @@ class AnnounController {
             }));
         });
     }
-    getAnnoun(category) {
+    getAnnoun(category, currId) {
         var id;
-        announModel.getById(this.params.id, category).then(function(res) {
+        return announModel.getById(currId, category).then(function(res) {
             id = res;
             return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
         }).then((templateHTML) => {
             var template = Handlebars.compile(templateHTML);
             $('#main').html(template({
+
                 id
             }));
         });
