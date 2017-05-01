@@ -54,11 +54,11 @@ class AnnounModel {
         return promise;
     }
 
-    saveAnnoun(category, url, heading, price, subHeading, body, mobile, key) {
-        let categoryRef = firebaseModule.database().ref().child(category);
+    saveAnnoun(category, url, heading, price, subHeading, body, mobile) {
+        let categoryRef = firebaseModule.database.child(category);
         let homeKey = categoryRef.push();
         var key = homeKey.key;
-        homeKey.set({
+        var obj = {
             'url': url,
             'head': heading,
             'price': price + ' $',
@@ -66,7 +66,9 @@ class AnnounModel {
             'body': body,
             'gsm': mobile,
             'id': key
-        });
+        };
+        console.log(obj);
+        homeKey.set(obj);
     }
 }
 

@@ -26,6 +26,8 @@ const router = (function() {
             this.get('/publicannoun', function() {
                 templates.load('publicannoun').then(templateHTML => { $('#main').html(templateHTML); });
             });
+            this.post('#/createannoun',announController.createAnnoun);
+
             this.get('/contact', function() {
                 templates.load('contact').then(templateHTML => { $('#main').html(templateHTML); });
             });

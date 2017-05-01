@@ -29,6 +29,20 @@ class AnnounController {
             }));
         });
     }
+    createAnnoun(sammy) {
+
+        let heading = sammy.params.heading;
+        let subHeading = sammy.params.subheading;
+        let mobile = sammy.params.mobile;
+        let price = sammy.params.price;
+        let body = sammy.params.textannoun;
+        let url = sammy.params.url;
+        let category = sammy.params.category;
+        
+       announModel
+            .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
+        sammy.redirect(`#/${category.toLowerCase()}`)
+    }
 }
 
 const announController = new AnnounController();
