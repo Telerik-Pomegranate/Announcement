@@ -31,9 +31,9 @@
                     	<span id="search_concept">Filter by</span> <span class="caret"></span>
                     </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#/homes">Homes</a></li>
-                                <li><a href="#/cars">Cars</a></li>
-                                <li><a href="#/pets">Pets</a></li>
+                                <li><a href="#/homes/1">Homes</a></li>
+                                <li><a href="#/cars/2">Cars</a></li>
+                                <li><a href="#/pets/3">Pets</a></li>
                             </ul>
                         </div>
                         <input type="hidden" name="search_param" value="all" id="search_param">
@@ -61,7 +61,7 @@
 
     <div id="main"></div>
 
-    <div class="footer-bottom" style="background-color:black">
+    <div class="footer-bottom" style="background-color:black; padding: 16px; position:fixed; bottom:0; width:100%;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -69,10 +69,27 @@
                         JS Applications Team Telerik-Pomegranate
                     </div>
                 </div>
+
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="design">
                         <a href="#/homes">Announcement </a> | <a target="_blank" href="#/home">Web Design & Development by Pomegranate  2017</a>
                     </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="container" style="margin-left: 309px; margin-top: -19px;">
+                    <div id="fb-root"></div>
+                    <script>
+                        (function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v2.9";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                    </script>
+                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
                 </div>
             </div>
         </div>

@@ -3,11 +3,17 @@ import templates from 'templates';
 import Handlebars from 'handlebars';
 
 class AnnounController {
-    allItems(category) {
+    allItems(category, id) {
+        id = +id;
         let items;
         announModel.getItems().then((res) => {
             items = res[category];
             //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
+            if (id === 1) { items = items.slice(0, 3); }
+            if (id === 2) { items = items.slice(3, 6) }
+            if (id === 3) { items = items.slice(6, 9) }
+            if (id === 4) { items = items.slice(9, 12) }
+            if (id === 5) { items = items.slice(12, 15) }
             return templates.load(category); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
