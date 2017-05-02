@@ -26,7 +26,7 @@
                     <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px">
                 </a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5" style="word-wrap: break-word;">
                 <h3>{{head}}</h3>
                 <h4>{{subheading}}</h4>
                 <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
@@ -35,7 +35,7 @@
                 <a class="btn btn-primary" href="#/homes/announcement/{{id}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             <h3>Mobile number: {{gsm}}</h3>
             </div>
-            <form action="#/deleteAnnouncement/{{id}}" method="POST"><button>Delete this announcement</button></form>
+            <form action="#/deleteAnnouncement/{{id}}" method="POST"><button style="float: right; margin-right: 35px;">Delete this announcement</button></form>
         </div>
         <hr>
         {{/items.items}}

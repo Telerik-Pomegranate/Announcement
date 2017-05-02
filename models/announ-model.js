@@ -79,9 +79,9 @@ class AnnounModel {
                 'userName': userName,
                 'email': email
             };
-            debugger
             homeKey.set(obj);
         });
+        return key;
     }
 }
 

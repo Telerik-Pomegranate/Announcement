@@ -39,9 +39,13 @@ class AnnounController {
         let url = sammy.params.url;
         let category = sammy.params.category;
 
-        announModel
+        let userObj = announModel
             .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
-        sammy.redirect(`#/${category.toLowerCase()}`)
+        announModel
+            .getItems().then(() => {
+                setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj}`) }, 1000);
+
+            });
     }
 }
 
