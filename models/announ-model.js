@@ -81,7 +81,7 @@ class AnnounModel {
             };
             homeKey.set(obj);
         });
-        return key;
+        return {key,userId};
     }
 }
 

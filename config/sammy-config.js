@@ -30,6 +30,9 @@ const router = (function() {
             this.get('/user-account', function() {
                 accountController.accountUser('user-account');
             });
+            this.get('/announ-on-user/:id', function() {
+                accountController.userAnnoun('announ-on-user', this.params.id);
+            });
             this.post('#/deleteAnnouncement/:id', function(sammy) {
                 accountController.removeAnnouncement(sammy)
             });

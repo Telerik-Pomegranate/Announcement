@@ -101,13 +101,24 @@ class AccountController {
             items = user;
             return templates.load(category);
         }).then((templateHTML) => {
-            console.log('aaaaaaa', items)
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
                 items
             }));
         });
 
+    }
+    userAnnoun(category, id) {
+        let items;
+        userModel.userAnnoun(id).then((user) => {
+            items = user;
+            return templates.load(category);
+        }).then((templateHTML) => {
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+        });
     }
     removeAnnouncement(sammy) {
         userModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {

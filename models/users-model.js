@@ -60,8 +60,35 @@ class UserModel {
         })
         return promise;
     }
+    userAnnoun(id) {
+        let promise = new Promise((resolve, reject) => {
+            //let currUser = firebaseDb.getCurrentUser();
+            //let currUser=
+            let resultUser;
+            let items = {};
+            // currUser.then(user => {
+            resultUser = id;
+            announModel.getItems()
+                .then((res) => {
+                    let AllAnnouncement = [];
+                    for (let category in res) {
+                        let AllAnnoun = res[category];
+                        for (let announ in AllAnnoun) {
+                            if (id === AllAnnoun[announ].currentUserId) {
+                                AllAnnouncement.push(AllAnnoun[announ]);
+                            }
+                        }
+                    }
+                    items.user = resultUser;
+                    items.items = AllAnnouncement;
+                    resolve(items);
+                })
+                // });
+        })
+        return promise;
+    }
     removeAnnouncement(currId) {
-        currId = currId; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
+        currId = currId;
         let getItems = announModel.getItems();
         let promise = new Promise((resolve, reject) => {
             let AllAnnouncement = [];

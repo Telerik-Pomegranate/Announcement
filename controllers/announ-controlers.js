@@ -43,7 +43,7 @@ class AnnounController {
             .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
         announModel
             .getItems().then(() => {
-                setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj}`) }, 1000);
+                setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
 
             });
     }

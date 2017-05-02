@@ -1,0 +1,69 @@
+  <div class="container">
+ <div class="row">
+            <div class="col-md-3">
+                <p class="lead">Category</p>
+                <div class="list-group" style="opacity: 0.8">
+                    <a href="#/homes" class="list-group-item">Homes</a>
+                    <a href="#/cars" class="list-group-item">Cars</a>
+                    <a href="#/pets" class="list-group-item">Pets</a>
+                </div>
+            </div>
+  </div>
+
+ <div class="row">
+            
+                <h1 class="page-header">Announcement on this user
+                </h1>
+            </div>
+
+        {{#if items.items}}{{#items.items}}
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#/homes/announcement/{{id}}" id="{{id}}" name="asd">
+                    <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>{{head}}</h3>
+                <h4>{{subheading}}</h4>
+                <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
+                <h3 style="display:inline-block">{{price}}</h3>
+                <p>{{body}}</p>
+                <a class="btn btn-primary" href="#/homes/announcement/{{id}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <h3>Mobile number: {{gsm}}</h3>
+            </div>
+        </div>
+        <hr>
+ {{/items.items}}
+  {{else}}<h3>This user have not published announcement yet</h3> {{/if}}
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+                <hr>
+    </div>
+  
+
