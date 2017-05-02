@@ -20,6 +20,7 @@ class AnnounController {
         let id;
         return announModel.getById(currId, category).then(function(res) {
             id = res;
+
             return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
@@ -30,7 +31,6 @@ class AnnounController {
         });
     }
     createAnnoun(sammy) {
-
         let heading = sammy.params.heading;
         let subHeading = sammy.params.subheading;
         let mobile = sammy.params.mobile;
@@ -38,8 +38,8 @@ class AnnounController {
         let body = sammy.params.textannoun;
         let url = sammy.params.url;
         let category = sammy.params.category;
-        
-       announModel
+
+        announModel
             .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
         sammy.redirect(`#/${category.toLowerCase()}`)
     }

@@ -1,5 +1,9 @@
 import userModel from 'user-model';
 import loginLogout from 'login-logout';
+import templates from 'templates';
+import Handlebars from 'handlebars';
+import announModel from 'announ-model';
+import firebaseModule from 'firebase-config';
 
 class AccountController {
     load(sammy) {
@@ -91,7 +95,26 @@ class AccountController {
                 const message = error.message;
             });
     }
+    accountUser(category) {
+        let items;
+        userModel.accountUser().then((user) => {
+            items = user;
+            return templates.load(category);
+        }).then((templateHTML) => {
+            console.log('aaaaaaa', items)
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+        });
 
+    }
+    removeAnnouncement(sammy) {
+        userModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
+            firebaseModule.database.child(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
+        }).catch(err => alert(err))
+        sammy.redirect(`#/user-account`)
+    }
 
 }
 
