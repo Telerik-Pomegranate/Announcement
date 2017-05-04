@@ -1,0 +1,50 @@
+  <div class="container">
+ <div class="row">
+            <div class="col-md-3">
+                <p class="lead">Category</p>
+                <div class="list-group" style="opacity: 0.8">
+                    <a href="#/homes" class="list-group-item">Homes</a>
+                    <a href="#/cars" class="list-group-item">Cars</a>
+                    <a href="#/pets" class="list-group-item">Pets</a>
+                </div>
+            </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-8">
+                        <h4>User: {{items.user.displayName}}</h4>
+                            <i class="glyphicon glyphicon-envelope"></i> {{items.user.email}}
+                            <br />
+                            <h4>My announcement:</h4>
+                              {{#if items.items}}{{#items.items}}
+        <div class="row" style="    margin-right:-200px;">
+            <div class="col-md-7">
+                <a href="#/homes/announcement/{{id}}" id="{{id}}" name="asd">
+                    <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px">
+                </a>
+            </div>
+            <div class="col-md-5" style="word-wrap: break-word;">
+                <h3>{{head}}</h3>
+                <h4>{{subheading}}</h4>
+                <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
+                <h3 style="display:inline-block">{{price}}</h3>
+                <p>{{body}}</p>
+                <a class="btn btn-primary" href="#/homes/announcement/{{id}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <h3>Mobile number: {{gsm}}</h3>
+            </div>
+            <form action="#/deleteAnnouncement/{{id}}" method="POST"><button style="float: right; margin-right: 35px;">Delete this announcement</button></form>
+        </div>
+        <hr>
+        {{/items.items}}
+  {{else}}<a href="#/publicannoun"><h3>You have not published announcement yet</h3></a> {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+  

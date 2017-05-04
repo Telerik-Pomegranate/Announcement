@@ -26,19 +26,27 @@ const router = (function() {
             this.get('/publicannoun', function() {
                 templates.load('publicannoun').then(templateHTML => { $('#main').html(templateHTML); });
             });
-            this.post('#/createannoun',announController.createAnnoun);
-
+            this.post('#/createannoun', announController.createAnnoun);
+            this.get('/user-account', function() {
+                accountController.accountUser('user-account');
+            });
+            this.get('/announ-on-user/:id', function() {
+                accountController.userAnnoun('announ-on-user', this.params.id);
+            });
+            this.post('#/deleteAnnouncement/:id', function(sammy) {
+                accountController.removeAnnouncement(sammy)
+            });
             this.get('/contact', function() {
                 templates.load('contact').then(templateHTML => { $('#main').html(templateHTML); });
             });
-            this.get('/homes', function() {
-                announController.allItems('homes')
+            this.get('/homes/:id', function() {
+                announController.allItems('homes', this.params.id)
             });
-            this.get('/cars', function() {
-                announController.allItems('cars')
+            this.get('/cars/:id', function() {
+                announController.allItems('cars',this.params.id)
             });
-            this.get('/pets', function() {
-                announController.allItems('pets')
+            this.get('/pets/:id', function() {
+                announController.allItems('pets',this.params.id)
             });
             this.get('/homes/announcement/:id', function() {
                 announController.getAnnoun('homes', this.params.id)

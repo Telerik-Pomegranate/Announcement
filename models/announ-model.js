@@ -1,5 +1,5 @@
 import firebaseModule from 'firebase-config';
-
+import userModel from 'user-model';
 class AnnounModel {
 
     getItems() {
@@ -55,20 +55,33 @@ class AnnounModel {
     }
 
     saveAnnoun(category, url, heading, price, subHeading, body, mobile) {
+
         let categoryRef = firebaseModule.database.child(category);
         let homeKey = categoryRef.push();
         var key = homeKey.key;
-        var obj = {
-            'url': url,
-            'head': heading,
-            'price': price + ' $',
-            'subheading': subHeading,
-            'body': body,
-            'gsm': mobile,
-            'id': key
-        };
-        console.log(obj);
-        homeKey.set(obj);
+        let userId;
+        let userName;
+        let email;
+        var obj = {};
+        userModel.accountInfo().then((user) => {
+            userId = user.uid;
+            userName = user.displayName;
+            email = user.email;
+            obj = {
+                'url': url,
+                'head': heading,
+                'price': price + ' $',
+                'subheading': subHeading,
+                'body': body,
+                'gsm': mobile,
+                'id': key,
+                'currentUserId': userId,
+                'userName': userName,
+                'email': email
+            };
+            homeKey.set(obj);
+        });
+        return {key,userId};
     }
 }
 
