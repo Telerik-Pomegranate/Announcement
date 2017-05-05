@@ -21,6 +21,7 @@ System.config({
         'login-logout': '../assets/scripts/login-logout.js',
         'search':'../assets/scripts/searchNavBar.js',
         'public-announ':'../assets/scripts/publicannoun.js',
+        'prevNextPage':'../assets/scripts/navigationPage.js',
     },
     packages: {
         '/': {

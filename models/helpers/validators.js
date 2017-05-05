@@ -36,7 +36,7 @@ const validator = (function() {
 
         validateUsername(username);
         validateEmail(email);
-        //confirmPassword(password, passwordConfirm);
+
     }
 
     return {
