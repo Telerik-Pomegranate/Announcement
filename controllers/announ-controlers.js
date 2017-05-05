@@ -10,9 +10,9 @@ class AnnounController {
         let displayItems;
         announModel.getItems().then((res) => {
             displayItems = res[category];
-            for (let i = 0; i < page; i += 3) {
-                items = displayItems.slice(i, i + 3);
-                page += 2;
+            for (let i = 0; i < page; i += 5) {
+                items = displayItems.slice(i, i + 5);
+                page += 4;
             }
             return templates.load(category);
         }).then((templateHTML) => {
@@ -24,7 +24,7 @@ class AnnounController {
 
             let ul = $('.pagination li').last();
             let currPage = 2;
-            for (let i = 3; i < displayItems.length; i += 3) {
+            for (let i = 5; i < displayItems.length; i += 5) {
                 ul.before($(`<li><a href="#/${category}/${currPage}">${currPage}</a></li>`));
                 currPage += 1;
             }

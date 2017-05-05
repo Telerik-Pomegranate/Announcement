@@ -28,10 +28,10 @@ const router = (function() {
             });
             this.post('#/createannoun', announController.createAnnoun);
             this.get('/user-account/:page', function() {
-                accountController.accountUser('user-account',this.params.page);
+                accountController.accountUser('user-account', this.params.page);
             });
             this.get('/announ-on-user/:page/:id', function() {
-                accountController.userAnnoun('announ-on-user', this.params.page,this.params.id);
+                accountController.userAnnoun('announ-on-user', this.params.page, this.params.id);
             });
             this.post('#/deleteAnnouncement/:id', function(sammy) {
                 accountController.removeAnnouncement(sammy)
@@ -57,6 +57,7 @@ const router = (function() {
             this.get('/pets/announcement/:id', function() {
                 announController.getAnnoun('pets', this.params.id)
             });
+
             this.post('#/login', accountController.signIn);
             this.post('#/register', accountController.signUp);
             this.get('#/logout', accountController.signOut);
