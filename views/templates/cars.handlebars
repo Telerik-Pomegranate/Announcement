@@ -8,12 +8,12 @@
         </div>
           {{#items}}
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-5">
                 <a href="#/cars/announcement/{{id}}" id="{{id}}" name="asd">
-                    <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px">
+                    <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px; border:1px solid;border-radius:10%">
                 </a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-7" style="color:black">
                 <h3>{{head}}</h3>
                 <h4>{{subheading}}</h4>
                 <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
@@ -28,26 +28,14 @@
         <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
+                    <li class="prev" style="cursor: pointer">
+                        <a>&laquo;</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#/cars/1">1</a>
                     </li>
-                    <li>
-                        <a href="#/cars/2">2</a>
-                    </li>
-                    <li>
-                        <a href="#/cars/3">3</a>
-                    </li>
-                    <li>
-                        <a href="#/cars/4">4</a>
-                    </li>
-                    <li>
-                        <a href="#/cars/5">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
+                    <li class="next" style="cursor: pointer">
+                        <a>&raquo;</a>
                     </li>
                 </ul>
             </div>

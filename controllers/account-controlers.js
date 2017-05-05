@@ -4,6 +4,7 @@ import templates from 'templates';
 import Handlebars from 'handlebars';
 import announModel from 'announ-model';
 import firebaseModule from 'firebase-config';
+import navigationPage from 'prevNextPage';
 
 class AccountController {
     load(sammy) {
@@ -95,29 +96,69 @@ class AccountController {
                 const message = error.message;
             });
     }
-    accountUser(category) {
-        let items;
+    accountUser(category, page) {
+        let clicedPage = +page;
+        page = +page;
+        let items = {};
+        let displayItems;
         userModel.accountUser().then((user) => {
             items = user;
+            displayItems = user.items.slice();
+            items.user = user.user;
+            for (let i = 0; i < page; i += 3) {
+                items.items = displayItems.slice(i, i + 3);
+                page += 2;
+            }
             return templates.load(category);
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
                 items
             }));
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+
+            for (let i = 3; i < displayItems.length; i += 3) {
+
+                ul.before($(`<li><a href="#/user-account/${currPage}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
         });
 
     }
-    userAnnoun(category, id) {
-        let items;
+    userAnnoun(category, page, id) {
+        let clicedPage = +page;
+        page = +page;
+        let items = {};
+        let displayItems;
         userModel.userAnnoun(id).then((user) => {
-            items = user;
+            displayItems = user.items.slice();
+            items.user = user.user;
+            for (let i = 0; i < page; i += 3) {
+                items.items = displayItems.slice(i, i + 3);
+                page += 2;
+            }
             return templates.load(category);
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
                 items
             }));
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+
+            for (let i = 3; i < displayItems.length; i += 3) {
+
+                ul.before($(`<li><a href="#/announ-on-user/${currPage}/${items.user}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
         });
     }
     removeAnnouncement(sammy) {

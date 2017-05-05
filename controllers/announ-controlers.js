@@ -1,33 +1,45 @@
 import announModel from 'announ-model';
 import templates from 'templates';
 import Handlebars from 'handlebars';
-
+import navigationPage from 'prevNextPage';
 class AnnounController {
-    allItems(category, id) {
-        id = +id;
+    allItems(category, page) {
+        let clicedPage = +page;
+        page = +page;
         let items;
+        let displayItems;
         announModel.getItems().then((res) => {
-            items = res[category];
-            //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
-            if (id === 1) { items = items.slice(0, 3); }
-            if (id === 2) { items = items.slice(3, 6) }
-            if (id === 3) { items = items.slice(6, 9) }
-            if (id === 4) { items = items.slice(9, 12) }
-            if (id === 5) { items = items.slice(12, 15) }
-            return templates.load(category); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+            displayItems = res[category];
+            for (let i = 0; i < page; i += 3) {
+                items = displayItems.slice(i, i + 3);
+                page += 2;
+            }
+            return templates.load(category);
         }).then((templateHTML) => {
+
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
                 items
             }));
+
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+            for (let i = 3; i < displayItems.length; i += 3) {
+                ul.before($(`<li><a href="#/${category}/${currPage}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
         });
+
     }
     getAnnoun(category, currId) {
         let id;
         return announModel.getById(currId, category).then(function(res) {
             id = res;
 
-            return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+            return templates.load('announcement');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
@@ -53,6 +65,8 @@ class AnnounController {
 
             });
     }
+
+
 }
 
 const announController = new AnnounController();
