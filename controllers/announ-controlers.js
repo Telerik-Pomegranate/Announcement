@@ -21,6 +21,7 @@ class AnnounController {
             $('#main').html(template({
                 items
             }));
+
             let ul = $('.pagination li').last();
             let currPage = 2;
             for (let i = 3; i < displayItems.length; i += 3) {
