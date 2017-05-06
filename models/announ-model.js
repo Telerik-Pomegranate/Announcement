@@ -54,7 +54,7 @@ class AnnounModel {
         return promise;
     }
 
-    saveAnnoun(category, url, heading, price, subHeading, body, mobile) {
+    saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile) {
 
         let categoryRef = firebaseModule.database.child(category);
         let homeKey = categoryRef.push();
@@ -68,7 +68,9 @@ class AnnounModel {
             userName = user.displayName;
             email = user.email;
             obj = {
+                'category': category,
                 'url': url,
+                'otherUrl': otherUrl,
                 'head': heading,
                 'price': price + ' $',
                 'subheading': subHeading,
@@ -81,7 +83,7 @@ class AnnounModel {
             };
             homeKey.set(obj);
         });
-        return {key,userId};
+        return { key, userId };
     }
 }
 

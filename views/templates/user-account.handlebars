@@ -21,21 +21,21 @@
                             <h4>My announcement:</h4>
                               {{#if items.items}}{{#items.items}}
         <div class="row" style="    margin-right:-200px;">
-            <div class="col-md-7">
-                <a href="#/homes/announcement/{{id}}" id="{{id}}" name="asd">
-                    <img class="img-responsive" src="{{url}}" alt=""> {{!--style="width: 700px; height: 300px">--}}
+            <div class="col-md-5">
+                <a href="#/{{category}}/announcement/{{id}}" id="{{id}}" name="asd">
+                    <img class="img-responsive" src="{{url}}" alt="" style="max-width: 300px;max-height: 200px;"> {{!--style="width: 700px; height: 300px">--}}
                 </a>
             </div>
-            <div class="col-md-5" style="word-wrap: break-word;">
+            <div class="col-md-7" style="word-wrap: break-word;">
                 <h3>{{head}}</h3>
                 <h4>{{subheading}}</h4>
                 <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
                 <h3>{{price}}</h3>
-                <p style="color: black">{{body}}</p>
-                <a class="btn btn-primary" href="#/homes/announcement/{{id}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <p style="height:20px; width:300px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">{{body}}</p>
+                <a class="btn btn-primary" href="#/{{category}}/announcement/{{id}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             <h4>Contact: {{gsm}}</h4>
             </div>
-            <form action="#/deleteAnnouncement/{{id}}" method="POST"><button style="float: right; margin-right: 35px;">Delete this announcement</button></form>
+            <form action="#/deleteAnnouncement/{{id}}" method="POST"><button style="float: right;">Delete this announcement</button></form>
         </div>
         <hr>
         {{/items.items}}

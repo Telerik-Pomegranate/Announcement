@@ -62,11 +62,8 @@ class UserModel {
     }
     userAnnoun(id) {
         let promise = new Promise((resolve, reject) => {
-            //let currUser = firebaseDb.getCurrentUser();
-            //let currUser=
             let resultUser;
             let items = {};
-            // currUser.then(user => {
             resultUser = id;
             announModel.getItems()
                 .then((res) => {
