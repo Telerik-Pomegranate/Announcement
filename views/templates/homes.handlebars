@@ -1,20 +1,24 @@
- <div class="homes">
+ <div class="homes" >
  <div class="container">
         <div class="row">
             <div class="col-lg-12">
                  <img class="slide-image" src="../../assets/img/woodtrace-home-image.png" alt="" style="width: 1150px; height: 300px" >
-                <h1 class="page-header">Houses
-                </h1>
+                
             </div>
         </div>
+        <h1 class="page-header">Houses
+                </h1>
+        <div style="background-color:lightslategrey">
+            
         {{#items}}
+         <hr style="margin-top: 20px; margin-bottom: 20px;border-top: 1px solid darkBlue">
         <div class="row">
             <div class="col-md-3">
                 <a href="#/homes/announcement/{{id}}" id="{{id}}" name="asd">
-                    <img class="img-responsive" src="{{url}}" alt="" style="margin:auto;height:auto; border:1px solid;border-radius:10%;max-width: 270px;max-height: 181px;">
+                    <img class="img-responsive" src="{{url}}" alt="" style="margin-left: 10px;;height:auto; border:1px solid;border-radius:10%;max-width: 270px;max-height: 181px;">
                 </a>
             </div>
-            <div class="col-md-9" style="color:black;margin:-2% 0 -2% 0">
+            <div class="col-md-9" style="color:black;margin:-2% 0 2% 0">
                 <h3>{{head}}</h3>
                 <h4>{{subheading}}</h4>
                 <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
@@ -24,8 +28,9 @@
             <h3>Mobile number: {{gsm}}</h3>
             </div>
         </div>
-        <hr>
+      
    {{/items}}
+        </div>
         <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
