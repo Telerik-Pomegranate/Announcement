@@ -1,4 +1,4 @@
-const validator = (function() {
+let validator = (function() {
 
     const PATTERNS = {
         NAME_PATTERN: /[^a-zA-Z]/,

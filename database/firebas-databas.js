@@ -1,8 +1,8 @@
 import firebaseModule from 'firebase-config';
 
-const firebaseDb = (function() {
-    const database = firebaseModule.database;
-    const auth = firebaseModule.auth;
+let firebaseDb = (function() {
+    let database = firebaseModule.database;
+    let auth = firebaseModule.auth;
 
     function getChild(child) {
         return database.child(child);
