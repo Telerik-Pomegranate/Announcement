@@ -2,6 +2,7 @@ import announModel from 'announ-model';
 import templates from 'templates';
 import Handlebars from 'handlebars';
 import navigationPage from 'prevNextPage';
+import eventImageAnnoun from 'eventImageAnnoun';
 class AnnounController {
     allItems(category, page) {
         let clicedPage = +page;
@@ -35,17 +36,18 @@ class AnnounController {
 
     }
     getAnnoun(category, currId) {
-        let id;
+        let items;
         return announModel.getById(currId, category).then(function(res) {
-            id = res;
+            items = res;
 
             return templates.load('announcement');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
 
-                id
+                items
             }));
+            eventImageAnnoun.event();
         });
     }
     createAnnoun(sammy) {
@@ -55,10 +57,10 @@ class AnnounController {
         let price = sammy.params.price;
         let body = sammy.params.textannoun;
         let url = sammy.params.url;
+        let otherUrl = [sammy.params.secondUrl, sammy.params.otherUrl, sammy.params.andOtherUrl];
         let category = sammy.params.category;
-
         let userObj = announModel
-            .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
+            .saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile)
         announModel
             .getItems().then(() => {
                 setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);

@@ -22,6 +22,7 @@ System.config({
         'search':'../assets/scripts/searchNavBar.js',
         'public-announ':'../assets/scripts/publicannoun.js',
         'prevNextPage':'../assets/scripts/navigationPage.js',
+        'eventImageAnnoun':'../assets/scripts/eventImageAnnoun.js',
     },
     packages: {
         '/': {
