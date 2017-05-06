@@ -40,8 +40,8 @@ class AccountController {
                 });
             })
             .catch(error => {
-                const code = error.code;
-                const message = error.message;
+                let code = error.code;
+                let message = error.message;
 
                 let $warningContainer = $('.warning');
                 $warningContainer.removeClass('hide');
@@ -69,8 +69,8 @@ class AccountController {
                     }, 750);
                 });
             }).catch(error => {
-                const code = error.code;
-                const message = error.message;
+                let code = error.code;
+                let message = error.message;
 
                 let $warningContainer = $('.warning');
                 $warningContainer.removeClass('hide');
@@ -92,8 +92,8 @@ class AccountController {
                     }, 750);
                 });
             }).catch(error => {
-                const code = error.code;
-                const message = error.message;
+                let code = error.code;
+                let message = error.message;
             });
     }
     accountUser(category, page) {
