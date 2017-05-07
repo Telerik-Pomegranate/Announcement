@@ -35,6 +35,23 @@ class AnnounController {
         });
 
     }
+    getTwoAnnounEveryCategory() {
+        let items;
+        announModel.getItems().then((res) => {
+            items = res;
+            items.homes = items.homes.splice(items.homes.length - 3);
+            items.cars = items.cars.splice(items.cars.length - 3);
+            items.pets = items.pets.splice(items.pets.length - 3);
+            console.log(items)
+            return templates.load('home');
+        }).then((templateHTML) => {
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+            eventImageAnnoun.event();
+        });
+    }
     getAnnoun(category, currId) {
         let items;
         return announModel.getById(currId, category).then(function(res) {
