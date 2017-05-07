@@ -72,7 +72,7 @@ class AnnounModel {
                 'url': url,
                 'otherUrl': otherUrl,
                 'head': heading,
-                'price': price + ' $',
+                'price': price + ' лв.',
                 'subheading': subHeading,
                 'body': body,
                 'gsm': mobile,

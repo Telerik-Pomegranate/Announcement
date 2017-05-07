@@ -15,7 +15,8 @@ const router = (function() {
                 this.redirect('#/home');
             });
             this.get('#/home', function() {
-                templates.load('home').then(templateHTML => { $('#main').html(templateHTML); });
+               // templates.load('home').then(templateHTML => { $('#main').html(templateHTML); });
+               announController.getTwoAnnounEveryCategory();
             });
             this.get('/login', function() {
                 templates.load('login').then(templateHTML => { $('#main').html(templateHTML); });

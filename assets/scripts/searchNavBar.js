@@ -4,6 +4,7 @@ const search = (function() {
         let concept;
         $('.search-panel .dropdown-menu').find('a').click(function(e) {
             //e.preventDefault();
+
             let param = $(this).attr("href") //.replace("#", "");
             concept = $(this).text();
             $('.search-panel span#search_concept').text(concept);
@@ -13,7 +14,7 @@ const search = (function() {
             let valueSearch = $('.form-control').val();
             let allElement = $('.row');
             let hr = $('hr');
-            let aTags = $('.col-md-5');
+            let aTags = $('.col-md-9');
             let searchText = valueSearch.toLowerCase();
             let found;
             let categori = concept;
