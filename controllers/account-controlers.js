@@ -165,7 +165,7 @@ class AccountController {
         userModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
             firebaseModule.database.child(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
         }).catch(err => alert(err))
-        sammy.redirect(`#/user-account`)
+        sammy.redirect(`#/user-account/1`)
     }
 
 }
