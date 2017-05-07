@@ -3,6 +3,7 @@ import templates from 'templates';
 import Handlebars from 'handlebars';
 import navigationPage from 'prevNextPage';
 import eventImageAnnoun from 'eventImageAnnoun';
+import firebaseDb from 'firebase-database';
 class AnnounController {
     allItems(category, page) {
         let clicedPage = +page;
@@ -35,14 +36,13 @@ class AnnounController {
         });
 
     }
-    getTwoAnnounEveryCategory() {
+    getThreeAnnounEveryCategory() {
         let items;
         announModel.getItems().then((res) => {
             items = res;
             items.homes = items.homes.splice(items.homes.length - 3);
             items.cars = items.cars.splice(items.cars.length - 3);
             items.pets = items.pets.splice(items.pets.length - 3);
-            console.log(items)
             return templates.load('home');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
@@ -56,12 +56,10 @@ class AnnounController {
         let items;
         return announModel.getById(currId, category).then(function(res) {
             items = res;
-
             return templates.load('announcement');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
-
                 items
             }));
             eventImageAnnoun.event();
@@ -81,11 +79,44 @@ class AnnounController {
         announModel
             .getItems().then(() => {
                 setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
-
             });
     }
+    userAnnoun(category, page, id) {
+        let clicedPage = +page;
+        page = +page;
+        let items = {};
+        let displayItems;
+        announModel.userAnnoun(id).then((user) => {
+            displayItems = user.items.slice();
+            items.user = user.user;
+            for (let i = 0; i < page; i += 3) {
+                items.items = displayItems.slice(i, i + 3);
+                page += 2;
+            }
+            return templates.load(category);
+        }).then((templateHTML) => {
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+            for (let i = 3; i < displayItems.length; i += 3) {
 
-
+                ul.before($(`<li><a href="#/announ-on-user/${currPage}/${items.user}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
+        });
+    }
+    removeAnnouncement(sammy) {
+        announModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
+            firebaseDb.getChild(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
+        }).catch(err => alert(err))
+        sammy.redirect(`#/user-account/1`)
+    }
 }
 
 const announController = new AnnounController();

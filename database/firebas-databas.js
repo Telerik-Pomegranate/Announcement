@@ -38,13 +38,10 @@ let firebaseDb = (function() {
         return auth.onAuthStateChanged(function(user) {
             callback(user);
         });
-
-        function removeData(child) {
-            return getChild(child).remove();
-        }
     }
 
     return {
+        getChild,
         getCurrentUser,
         createUserWithEmail,
         signInWithEmail,

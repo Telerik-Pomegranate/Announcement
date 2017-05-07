@@ -18,6 +18,4 @@ $(document).ready(function() {
             localStorage.setItem('userUid', null);
         }
     });
-
-    
 });

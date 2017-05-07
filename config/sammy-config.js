@@ -15,8 +15,8 @@ const router = (function() {
                 this.redirect('#/home');
             });
             this.get('#/home', function() {
-               // templates.load('home').then(templateHTML => { $('#main').html(templateHTML); });
-               announController.getTwoAnnounEveryCategory();
+                // templates.load('home').then(templateHTML => { $('#main').html(templateHTML); });
+                announController.getThreeAnnounEveryCategory();
             });
             this.get('/login', function() {
                 templates.load('login').then(templateHTML => { $('#main').html(templateHTML); });
@@ -32,10 +32,10 @@ const router = (function() {
                 accountController.accountUser('user-account', this.params.page);
             });
             this.get('/announ-on-user/:page/:id', function() {
-                accountController.userAnnoun('announ-on-user', this.params.page, this.params.id);
+                announController.userAnnoun('announ-on-user', this.params.page, this.params.id);
             });
             this.post('#/deleteAnnouncement/:id', function(sammy) {
-                accountController.removeAnnouncement(sammy)
+                announController.removeAnnouncement(sammy)
             });
             this.get('/contact', function() {
                 templates.load('contact').then(templateHTML => { $('#main').html(templateHTML); });
