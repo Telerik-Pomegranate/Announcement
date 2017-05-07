@@ -12,22 +12,19 @@ class AnnounModel {
                     let carsArr = [];
                     let homesArr = [];
                     for (let i in snap.val().pets) {
-                        // console.log('value ', snap.val())
                         petsArr.push(snap.val().pets[i]);
                     }
                     for (let i in snap.val().cars) {
-                        // console.log('value ', snap.val())
                         carsArr.push(snap.val().cars[i]);
                     }
                     for (let i in snap.val().homes) {
-                        // console.log('value ', snap.val())
                         homesArr.push(snap.val().homes[i]);
                     }
 
                     let items = {
-                        pets: petsArr, //snap.val().pets['-KikZyXR-KSWMlLJbzLL'],
-                        homes: homesArr, //snap.val().homes['-Kip1vzK1uykpHETuVEC'],
-                        cars: carsArr //snap.val().cars['-KikZyXO22U5zrl4jzH6']
+                        pets: petsArr,
+                        homes: homesArr, 
+                        cars: carsArr 
                     };
 
                     resolve(items);
@@ -38,7 +35,7 @@ class AnnounModel {
     }
 
     getById(id, itemsAnnoun) {
-        id = id; //taka shtoto otdolu ot sami mi idva "100"i ne sa ravni poneje e string
+        id = id; 
         let getItems = this.getItems();
         let promise = new Promise(function(resolve, reject) {
             getItems.then(res => {
@@ -48,7 +45,7 @@ class AnnounModel {
                     } else {
                         reject: 'ID not found'
                     }
-                })
+                });
             });
         });
         return promise;
@@ -84,6 +81,54 @@ class AnnounModel {
             homeKey.set(obj);
         });
         return { key, userId };
+    }
+    userAnnoun(id) {
+        let promise = new Promise((resolve, reject) => {
+            let resultUser;
+            let items = {};
+            resultUser = id;
+            announModel.getItems()
+                .then((res) => {
+                    let AllAnnouncement = [];
+                    for (let category in res) {
+                        let AllAnnoun = res[category];
+                        for (let announ in AllAnnoun) {
+                            if (id === AllAnnoun[announ].currentUserId) {
+                                AllAnnouncement.push(AllAnnoun[announ]);
+                            }
+                        }
+                    }
+                    items.user = resultUser;
+                    items.items = AllAnnouncement;
+                    resolve(items);
+                })
+                // });
+        })
+        return promise;
+    }
+    removeAnnouncement(currId) {
+        currId = currId;
+        let getItems = announModel.getItems();
+        let promise = new Promise((resolve, reject) => {
+            let AllAnnouncement = [];
+            getItems.then(res => {
+                for (let category in res) {
+                    let AllAnnoun = res[category];
+                    for (let announ in AllAnnoun) {
+                        if (currId === AllAnnoun[announ].id) {
+                            AllAnnouncement.push({
+                                idAnnoun: AllAnnoun[announ],
+                                announCategory: category
+                            });
+                        }
+                    }
+                }
+                return AllAnnouncement;
+            });
+
+            resolve(AllAnnouncement);
+        });
+        return promise;
     }
 }
 

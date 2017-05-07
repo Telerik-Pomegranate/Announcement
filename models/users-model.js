@@ -55,56 +55,8 @@ class UserModel {
                         items.user = resultUser;
                         items.items = AllAnnouncement;
                         resolve(items);
-                    })
+                    });
             });
-        })
-        return promise;
-    }
-    userAnnoun(id) {
-        let promise = new Promise((resolve, reject) => {
-            let resultUser;
-            let items = {};
-            resultUser = id;
-            announModel.getItems()
-                .then((res) => {
-                    let AllAnnouncement = [];
-                    for (let category in res) {
-                        let AllAnnoun = res[category];
-                        for (let announ in AllAnnoun) {
-                            if (id === AllAnnoun[announ].currentUserId) {
-                                AllAnnouncement.push(AllAnnoun[announ]);
-                            }
-                        }
-                    }
-                    items.user = resultUser;
-                    items.items = AllAnnouncement;
-                    resolve(items);
-                })
-                // });
-        })
-        return promise;
-    }
-    removeAnnouncement(currId) {
-        currId = currId;
-        let getItems = announModel.getItems();
-        let promise = new Promise((resolve, reject) => {
-            let AllAnnouncement = [];
-            getItems.then(res => {
-                for (let category in res) {
-                    let AllAnnoun = res[category];
-                    for (let announ in AllAnnoun) {
-                        if (currId === AllAnnoun[announ].id) {
-                            AllAnnouncement.push({
-                                idAnnoun: AllAnnoun[announ],
-                                announCategory: category
-                            });
-                        }
-                    }
-                }
-                return AllAnnouncement;
-            });
-
-            resolve(AllAnnouncement);
         });
         return promise;
     }
