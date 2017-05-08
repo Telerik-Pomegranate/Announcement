@@ -5,7 +5,7 @@ class Templates {
             return Promise.resolve(cacheObj[name]);
         }
 
-        let url = 'views/templates/' + name + '.handlebars';
+        let url = '../views/templates/' + name + '.handlebars';
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: url,

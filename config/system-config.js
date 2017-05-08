@@ -23,6 +23,7 @@ System.config({
         'public-announ':'../assets/scripts/publicannoun.js',
         'prevNextPage':'../assets/scripts/navigationPage.js',
         'eventImageAnnoun':'../assets/scripts/eventImageAnnoun.js',
+        'test':'../test/test.js'
     },
     packages: {
         '/': {
