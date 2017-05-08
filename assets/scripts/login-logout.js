@@ -2,13 +2,15 @@ import firebaseDb from 'firebase-database';
 let loginLogout = (function() {
     function login() {
         let liElements = $('.pull-right li');
-        let firstAnchor = liElements.eq(2).children('a');
-        let secondAnchor = liElements.eq(3).children('a');
+        let firstAnchor = liElements.eq(3).children('a')
+        let secondAnchor = liElements.eq(4).children('a')
         firstAnchor[0].style.display = 'none';
         secondAnchor[0].style.display = 'none';
         let imgLogin = liElements.eq(1).children('p').children('a')[0];
         imgLogin.style.display = '';
-        let logOutBtn = liElements.eq(4).children('a');
+        let mailLogin = liElements.eq(2).children('p').children('a')[0];
+        mailLogin.style.display = '';
+        let logOutBtn = liElements.eq(5).children('a');
         logOutBtn[0].style.display = '';
         let publicAnnouncement = liElements.eq(0).children('a');
         publicAnnouncement[0].style.display = '';
@@ -16,13 +18,15 @@ let loginLogout = (function() {
 
     function logout() {
         let liElements = $('.pull-right li');
-        let firstAnchor = liElements.eq(2).children('a');
-        let secondAnchor = liElements.eq(3).children('a');
+        let firstAnchor = liElements.eq(3).children('a');
+        let secondAnchor = liElements.eq(4).children('a');
         firstAnchor[0].style.display = '';
         secondAnchor[0].style.display = '';
         let imgLogin = liElements.eq(1).children('p').children('a')[0];
         imgLogin.style.display = 'none';
-        let logOutBtn = liElements.eq(4).children('a');
+        let mailLogin = liElements.eq(2).children('p').children('a')[0];
+        mailLogin.style.display = 'none';
+        let logOutBtn = liElements.eq(5).children('a');
         logOutBtn[0].style.display = 'none';
         let publicAnnouncement = liElements.eq(0).children('a');
         publicAnnouncement[0].style.display = 'none';
