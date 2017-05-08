@@ -1,23 +1,29 @@
 import firebaseDb from 'firebase-database';
-//mocha.setup("bdd");
 
-const { expect } = chai;
+mocha.setup('bdd');
+
+let expect = chai.expect;
 
 describe('data layer tests', () => {
     describe('registration tests', () => {
         it('Register with email', (done) => {
-            //const user = {
-            /*      email: 'valid@abv.com',
-                  username: 'validusername',
-                  password: 'validpassword',
+            let self = true;
+            const user = {
+                username: 'validusername',
+                password: 'validpassword',
+                email: 'valid@email.com'
+            };
+            
+            sinon.stub(firebaseDb, 'createUserWithEmail')
+                .returns(Promise.resolve());
 
-              }*/
-            let promise = firebaseDb.createUserWithEmail('valid@abv.com', 'validusername', 'validpassword');
+            firebaseDb.createUserWithEmail(user)
+                .then(expect(firebaseDb.createUserWithEmail).to.have.callCount(1))
+                .then(done, done);
 
-            promise.then(result => { console.log(result) }) //.then(done, done);
-
-            //sinon.stub(firebaseDb, 'createUserWithEmail');
-        })
+            firebaseDb.createUserWithEmail.restore();
+        });
     });
 });
-//mocha.run();
+
+mocha.run();

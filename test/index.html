@@ -11,29 +11,13 @@
 <body>
     <div id="mocha"></div>
 
-    <!-- Testing -->
-    <script src="../node_modules/mocha/mocha.js"></script>
-    <script src="../node_modules/chai/chai.js"></script>
-    <script src="../node_modules/sinon/pkg/sinon.js"></script>
-    <script src="../node_modules/sinon-chai/lib/sinon-chai.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
     <script src="../lib/node_modules/systemjs/dist/system.js"></script>
-    <script src="../config/system-config.js"></script>
-
-    <script>
-        mocha.setup('bdd');
-        const {
-            expect
-        } = chai;
-        Promise.all([
-                System.import('./test.js'),
-
-            ])
-            .then(() => mocha.run());
-    </script>
-
-
-
+    <script src="../lib/scripts/node_modules/mocha/mocha.js"></script>    
+    <script src="../lib/scripts/node_modules/chai/chai.js"></script>
+    <script src="../lib/scripts/node_modules/sinon/pkg/sinon.js"></script>
+    <script src="../lib/scripts/node_modules/sinon-chai/lib/sinon-chai.js"></script>
+    <script src="./config.js"></script>
 </body>
 
 </html>
