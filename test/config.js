@@ -15,6 +15,7 @@ SystemJS.config({
         'firebase-config': '../config/firebase-config.js',
         'user-model': '../models/users-model.js',
         'announ-model': '../models/announ-model.js',
+        'msg-model': '../models/msg-model.js',
         'accountController': '../controllers/account-controlers.js',
         'announController': '../controllers/announ-controlers.js',
         'login-logout': '../assets/scripts/login-logout.js',
