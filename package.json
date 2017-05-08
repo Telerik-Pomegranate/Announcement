@@ -16,7 +16,7 @@
     "sinon-chai": "^2.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",

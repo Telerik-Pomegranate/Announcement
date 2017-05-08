@@ -2,9 +2,9 @@ const chai = require('../node_modules/chai/chai.js'),
     { expect } = chai,
     sinon = require('../node_modules/sinon/lib/sinon');
 
-import firebaseDb from '../database/firebas-databas';
-import firebaseModule from '../config/firebase-config';
-import search from 'search';
+// import firebaseDb from '../database/firebas-databas';
+// import firebaseModule from '../config/firebase-config';
+// import search from 'search';
 
 
 describe('data layer tests', () => {
@@ -16,7 +16,7 @@ describe('data layer tests', () => {
                 email: 'valid@email.com'
             };
 
-            sinon.stub(firebaseDb, 'createUserWithEmail');
+            // sinon.stub(firebaseDb, 'createUserWithEmail');
         });
     });
 });
