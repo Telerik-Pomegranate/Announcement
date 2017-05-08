@@ -1,11 +1,4 @@
-const chai = require('../node_modules/chai/chai.js'),
-    { expect } = chai,
-    sinon = require('../node_modules/sinon/lib/sinon');
-
-// import firebaseDb from '../database/firebas-databas';
-// import firebaseModule from '../config/firebase-config';
-// import search from 'search';
-
+const { expect } = chai;
 
 describe('data layer tests', () => {
     describe('registration tests', () => {
