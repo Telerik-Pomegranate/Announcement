@@ -3,9 +3,9 @@
             <div class="col-md-3">
                 <p class="lead">Category</p>
                 <div class="list-group" style="opacity: 0.8">
-                    <a href="#/homes" class="list-group-item">Homes</a>
-                    <a href="#/cars" class="list-group-item">Cars</a>
-                    <a href="#/pets" class="list-group-item">Pets</a>
+                    <a href="#/homes/1" class="list-group-item">Homes</a>
+                    <a href="#/cars/1" class="list-group-item">Cars</a>
+                    <a href="#/pets/1" class="list-group-item">Pets</a>
                 </div>
             </div>
   </div>
@@ -17,18 +17,18 @@
 
         {{#if items.items}}{{#items.items}}
         <div class="row">
-            <div class="col-md-7">
-                <a href="#/homes/announcement/{{id}}" id="{{id}}" name="asd">
-                    <img class="img-responsive" src="{{url}}" alt="" style="width: 700px; height: 300px">
+            <div class="col-md-5">
+                <a href="#/{{category}}/announcement/{{id}}" id="{{id}}" name="asd">
+                    <img class="img-responsive" src="{{url}}" alt="" style="border:1px solid;border-radius:10%;width: 400px;height: 300px;">
                 </a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-7" style="color:black">
                 <h3>{{head}}</h3>
                 <h4>{{subheading}}</h4>
                 <strong style="color:indigo;  font-size: 100%;" >Price: </strong>
                 <h3 style="display:inline-block">{{price}}</h3>
-                <p>{{body}}</p>
-                <a class="btn btn-primary" href="#/homes/announcement/{{id}}">More details.. <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <p style="height:20px; width:300px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">{{body}}</p>
+                <a class="btn btn-primary" href="#/{{category}}/announcement/{{id}}">More details... <span class="glyphicon glyphicon-chevron-right"></span></a>
             <h3>Mobile number: {{gsm}}</h3>
             </div>
         </div>
@@ -38,26 +38,14 @@
         <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
+                    <li class="prev" style="cursor: pointer">
+                        <a>&laquo;</a>
                     </li>
                     <li>
-                        <a href="#">2</a>
+                        <a href="#/announ-on-user/1/{{items.user}}">1</a>
                     </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
+                    <li class="next" style="cursor: pointer">
+                        <a>&raquo;</a>
                     </li>
                 </ul>
             </div>

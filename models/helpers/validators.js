@@ -1,4 +1,4 @@
-const validator = (function() {
+let validator = (function() {
 
     const PATTERNS = {
         NAME_PATTERN: /[^a-zA-Z]/,
@@ -12,7 +12,6 @@ const validator = (function() {
         INVALID_PASSWORD_MESSAGE: 'The password must be at least 6 symbols long and contain at least one uppercase, lowercase and a number.',
         INVALID_USERNAME_MESSAGE: 'The username must be between 6 and 10 symbols and include only letters, numbers and underscores.',
         INVALID_EMAIL_MESSAGES: 'The email is badly formatted.',
-        INVALID_PASSWORD_CONFIRM_MESSAGE: 'Passwords does not match.'
     };
 
     function validateUsername(username) {
@@ -36,7 +35,7 @@ const validator = (function() {
 
         validateUsername(username);
         validateEmail(email);
-        //confirmPassword(password, passwordConfirm);
+
     }
 
     return {

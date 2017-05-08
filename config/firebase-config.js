@@ -1,4 +1,4 @@
-  const firebaseModule = (function() {
+  let firebaseModule = (function() {
       let config = {
           apiKey: "AIzaSyCO5M1SvfgnogVLmYnUxPaBD3e0_5hD7nk",
           authDomain: "shops-b5548.firebaseapp.com",
@@ -9,8 +9,8 @@
       };
       firebase.initializeApp(config);
 
-      const database = firebase.database().ref();
-      const auth = firebase.auth();
+      let database = firebase.database().ref();
+      let auth = firebase.auth();
 
       return {
           database,

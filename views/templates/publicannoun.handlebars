@@ -3,9 +3,9 @@
         <div class="col-md-3">
             <p class="lead">Category</p>
             <div class="list-group" style="opacity: 0.8">
-                <a href="#/homes" class="list-group-item">Homes</a>
-                <a href="#/cars" class="list-group-item">Cars</a>
-                <a href="#/pets" class="list-group-item">Pets</a>
+                <a href="#/homes/1" class="list-group-item">Homes</a>
+                <a href="#/cars/1" class="list-group-item">Cars</a>
+                <a href="#/pets/1" class="list-group-item">Pets</a>
             </div>
         </div>
         <div class="col-md-5">
@@ -14,7 +14,7 @@
                     <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Post an Ad</h3>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="heading" name="heading" placeholder="Heading" required>
+                        <input type="text" class="form-control" id="heading" name="heading" placeholder="Heading" required  maxlength="50">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="subheading" name="subheading" placeholder="Sub heading" required>
@@ -26,15 +26,20 @@
                         <input type="text" class="form-control" id="price" name="price" placeholder="Price" required>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" type="textarea" id="textannoun" name="textannoun" placeholder="Text announcement" maxlength="140" rows="7"></textarea>
+                        <textarea class="form-control" type="textarea" id="textannoun" name="textannoun" placeholder="Text announcement" maxlength="1000" rows="7"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="url" name="url" placeholder="url" required>
+                        <input type="text" class="form-control" id="url" name="url" placeholder="Base url" required>
                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control" id="secondUrl" name="secondUrl" placeholder="second url" style="width:33%;display:inline" required>
+                        <input type="text" class="form-control" id="otherUrl" name="otherUrl" placeholder="other url" style="width:32.9%;display:inline; margin-left: -1px" required>
+                        <input type="text" class="form-control" id="andOtherUrl" name="andOtherUrl" placeholder="and other url" style="width:33%;float:right" required>
+                    </div> 
                     <button class="btn btn-primary pull-right">Submit Form</button>
 
                     <div class="input-group" style="opacity:0.8">
-                        <select name="category" id="category">
+                        <select name="category" id="category" style="padding: 5px 20px 5px 20px;">
                             <option value="homes">Homes</option>
                             <option value="cars">Cars</option>
                             <option value="pets">Pets</option>

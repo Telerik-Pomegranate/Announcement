@@ -1,25 +1,55 @@
 import announModel from 'announ-model';
 import templates from 'templates';
 import Handlebars from 'handlebars';
-
+import navigationPage from 'prevNextPage';
+import eventImageAnnoun from 'eventImageAnnoun';
+import firebaseDb from 'firebase-database';
 class AnnounController {
-    allItems(category, id) {
-        id = +id;
+    allItems(category, page) {
+        let clicedPage = +page;
+        page = +page;
+        let items;
+        let displayItems;
+        announModel.getItems().then((res) => {
+            displayItems = res[category];
+            for (let i = 0; i < page; i += 5) {
+                items = displayItems.slice(i, i + 5);
+                page += 4;
+            }
+            return templates.load(category);
+        }).then((templateHTML) => {
+
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+            for (let i = 5; i < displayItems.length; i += 5) {
+                ul.before($(`<li><a href="#/${category}/${currPage}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
+        });
+
+    }
+    getThreeAnnounEveryCategory() {
         let items;
         announModel.getItems().then((res) => {
-            items = res[category];
-            //sega shte returnem promis-shtoto vzimame pak biblioteka handlebars
-            if (id === 1) { items = items.slice(0, 3); }
-            if (id === 2) { items = items.slice(3, 6) }
-            if (id === 3) { items = items.slice(6, 9) }
-            if (id === 4) { items = items.slice(9, 12) }
-            if (id === 5) { items = items.slice(12, 15) }
-            return templates.load(category); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+            items = res;
+            items.homes = items.homes.splice(items.homes.length - 3);
+            items.cars = items.cars.splice(items.cars.length - 3);
+            items.pets = items.pets.splice(items.pets.length - 3);
+            return templates.load('home');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
                 items
             }));
+            eventImageAnnoun.event();
         });
     }
     getAnnoun(category, currId) {
@@ -34,6 +64,7 @@ class AnnounController {
                 ad,
                 category
             }));
+            eventImageAnnoun.event();
         });
     }
     createAnnoun(sammy) {
@@ -43,16 +74,52 @@ class AnnounController {
         let price = sammy.params.price;
         let body = sammy.params.textannoun;
         let url = sammy.params.url;
+        let otherUrl = [sammy.params.secondUrl, sammy.params.otherUrl, sammy.params.andOtherUrl];
         let category = sammy.params.category;
-
         let userObj = announModel
-            .saveAnnoun(category, url, heading, price, subHeading, body, mobile)
+            .saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile)
         announModel
             .getItems().then(() => {
                 $('').append('<div><span>New Ad is successfully added</span></div>').addClass('alert alert-success alert-dismissible');                setTimeout(function() { 
                     sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
 
             });
+    }
+    userAnnoun(category, page, id) {
+        let clicedPage = +page;
+        page = +page;
+        let items = {};
+        let displayItems;
+        announModel.userAnnoun(id).then((user) => {
+            displayItems = user.items.slice();
+            items.user = user.user;
+            for (let i = 0; i < page; i += 3) {
+                items.items = displayItems.slice(i, i + 3);
+                page += 2;
+            }
+            return templates.load(category);
+        }).then((templateHTML) => {
+            let template = Handlebars.compile(templateHTML);
+            $('#main').html(template({
+                items
+            }));
+            let ul = $('.pagination li').last();
+            let currPage = 2;
+            for (let i = 3; i < displayItems.length; i += 3) {
+
+                ul.before($(`<li><a href="#/announ-on-user/${currPage}/${items.user}">${currPage}</a></li>`));
+                currPage += 1;
+            }
+            let clickedLi = $('.pagination li').eq(clicedPage);
+            clickedLi.addClass('active');
+            navigationPage.navigation();
+        });
+    }
+    removeAnnouncement(sammy) {
+        announModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
+            firebaseDb.getChild(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
+        }).catch(err => alert(err))
+        sammy.redirect(`#/user-account/1`)
     }
 }
 

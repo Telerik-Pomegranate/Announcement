@@ -1,24 +1,44 @@
    <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{ad.head}} {{ad.price}}
+                <h1 class="page-header">{{ad.head}} - {{ad.price}}
                     <small style="float:right">contact: {{ad.gsm}}, email: {{ad.email}}</small>
                 </h1>
             </div>
         </div>
         <div class="row">
 
-            <div class="col-md-8">
-                <img class="img-responsive" src="{{ad.url}}" alt="" style="width:700 height:300">
+            <div class="col-md-4">
+                  <a class="views-other-image" style=" cursor: pointer;">
+                <img class="img-responsive" src="{{ad.url}}" alt="" style=" border:1px solid;border-radius:10%; width: 350px;height: 300px;" >
+            </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-7" style="color:black;">
                 <h3>{{ad.subheading}}</h3>
                 <p>{{ad.body}}</p>
-                 <h4>Published By: <a href="#/announ-on-user/{{ad.currentUserId}}" style="color:darkslategray">{{ad.userName}}</a></h4>
+                 <h4>Published By: <a href="#/announ-on-user/1/{{ad.currentUserId}}" style="color:grey">{{ad.userName}}</a></h4>
                  <a class="btn btn-primary" href="#/leaveamsg/{{ad.id}}/{{category}}">Leave A Message</a>
             </div>
+            <div class="row">
+
+            <div class="col-lg-12">
+                {{!--<h3 class="page-header">Related images</h3>     --}}
+                <hr style="width:97%;">
+            </div>
+<div style="margin-left: 16px;">
+    {{#ad.otherUrl}}
+            <div class="col-sm-2 col-xs-6">
+                <a class="views-other-image" style=" cursor: pointer;">
+                    <img class="img-responsive portfolio-item " src="{{this}}" alt="" style="width:100px;height:70px">
+                </a>
+            </div>
+{{/ad.otherUrl}}
+            
+</div>
         </div>
+        </div>
+        
         <div style="float:right; margin-top: -10px;">
  <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&mobile_iframe=true&width=86&height=20&appId" width="86" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>

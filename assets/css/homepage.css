@@ -7,12 +7,18 @@
 html {
     position: relative;
     /* min-width: 1024px;*/
-    min-height: 768px;
+    min-height: 950px;
+    /*768px;*/
     height: 100%;
 }
 
 body {
     background-image: url('../../assets/img/Navy-blue-shines-simple-background.jpg');
+    /*    background-color: #4040A2;*/
+    /*background-color: #CECEE5;*/
+    background-color: #0E6E94;
+    background-repeat: no-repeat;
+    background-size: 100% 200%;
     padding-top: 70px;
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
