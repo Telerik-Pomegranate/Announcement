@@ -1,8 +1,6 @@
-//import Sammy from 'sammy';
 import 'jquery';
 import router from 'router';
 import firebaseDb from '../../database/firebas-databas';
-import firebaseModule from 'firebase-config';
 import search from 'search';
 $(document).ready(function() {
     router.start();
