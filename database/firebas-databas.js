@@ -15,6 +15,7 @@ let firebaseDb = (function() {
                 user.updateProfile({ displayName: username });
                 localStorage.setItem('username', username);
                 localStorage.setItem('userUid', user.uid);
+                console.log(user);
             })
             .catch(error => Promise.reject(error));
     }
