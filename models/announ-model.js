@@ -42,13 +42,14 @@ class AnnounModel {
         let getItems = this.getItems();
         let promise = new Promise(function(resolve, reject) {
             getItems.then(res => {
-                res[itemsAnnoun].find(function(item) {
-                    if (item.id === id) {
-                        resolve(item)
-                    } else {
-                        reject: 'ID not found'
-                    }
+                let item = res[itemsAnnoun].find(function(item) {
+                    return item.id === id;
                 })
+                if (item) {
+                    resolve(item);
+                } else {
+                    reject('ID not found')
+                }
             });
         });
         return promise;

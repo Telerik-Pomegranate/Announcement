@@ -1,21 +1,22 @@
    <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{id.head}} {{id.price}}
-                    <small style="float:right">contact: {{id.gsm}}, email: {{id.email}}</small>
+                <h1 class="page-header">{{ad.head}} {{ad.price}}
+                    <small style="float:right">contact: {{ad.gsm}}, email: {{ad.email}}</small>
                 </h1>
             </div>
         </div>
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="{{id.url}}" alt="" style="width:700 height:300">
+                <img class="img-responsive" src="{{ad.url}}" alt="" style="width:700 height:300">
             </div>
 
             <div class="col-md-4">
-                <h3>{{id.subheading}}</h3>
-                <p>{{id.body}}</p>
-                 <h4>Published By: <a href="#/announ-on-user/{{id.currentUserId}}" style="color:darkslategray">{{id.userName}}</a></h4>
+                <h3>{{ad.subheading}}</h3>
+                <p>{{ad.body}}</p>
+                 <h4>Published By: <a href="#/announ-on-user/{{ad.currentUserId}}" style="color:darkslategray">{{ad.userName}}</a></h4>
+                 <a class="btn btn-primary" href="#/leaveamsg/{{ad.id}}/{{category}}">Leave A Message</a>
             </div>
         </div>
         <div style="float:right; margin-top: -10px;">

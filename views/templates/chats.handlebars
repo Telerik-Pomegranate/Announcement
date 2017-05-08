@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="opacity: 0.8">
+                <a href="#/chats/received" class="list-group-item">Received</a>
+                <a href="#/chats/sent" class="list-group-item">Sent</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1 class="page-header">{{category}}</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>From/To</th>
+                        <th>Advertisement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#chats}}
+                    <tr>
+                        <th scope="row"><a href="#/chats/msgs/{{msgs}}" id="{{msgs}}" name="asd">{{user}}</a></th>
+                        <td>{{adName}}</td>
+                    </tr>
+                    {{/chats}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

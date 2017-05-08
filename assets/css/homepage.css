@@ -71,4 +71,12 @@ footer {
     padding: 10px 40px 60px;
     margin: 10px 0px 60px;
     border: 1px solid GREY;
-}
+} 
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: GREY;
+ }
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: white;
+ }
