@@ -1,0 +1,15 @@
+ {{#msgs}}
+<div class="row">
+    {{#if isCurrentUser}}
+    <div class="col-md-4 col-md-offset-4" style="background-color: grey">
+        {{msg}}
+        <span style="display:block; font:8px;">{{time}}</span>
+    </div>
+    {{else}}
+    <div class="col-md-4" style="background-color: white">
+        {{from}} : {{msg}}
+        <span style="display:block; font:8px;">{{time}}</span>
+    </div>
+    {{/if}}
+</div>
+{{/msgs}}

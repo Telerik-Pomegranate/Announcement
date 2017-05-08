@@ -3,6 +3,7 @@ import Sammy from 'sammy';
 import templates from 'templates';
 import accountController from 'accountController';
 import announController from 'announController';
+import msgController from 'msgController';
 import Handlebars from 'handlebars';
 
 const router = (function() {
@@ -37,6 +38,12 @@ const router = (function() {
             this.post('#/deleteAnnouncement/:id', function(sammy) {
                 announController.removeAnnouncement(sammy)
             });
+            this.get('#/leaveamsg/:id/:category' , msgController.leaveMsg)
+            this.post('#/sendamsg/:id/:category', msgController.sendMsg)
+            this.get('#/chats/:category', msgController.getChats)
+            this.get('#/chats/msgs/:msgId', msgController.getMsgs)
+            this.post('#/addmsg/:msgId', msgController.addMsg)
+
             this.get('/contact', function() {
                 templates.load('contact').then(templateHTML => { $('#main').html(templateHTML); });
             });

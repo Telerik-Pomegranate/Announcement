@@ -53,14 +53,16 @@ class AnnounController {
         });
     }
     getAnnoun(category, currId) {
-        let items;
+        let ad;
         return announModel.getById(currId, category).then(function(res) {
-            items = res;
-            return templates.load('announcement');
+            ad = res;
+
+            return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
-                items
+                ad,
+                category
             }));
             eventImageAnnoun.event();
         });
@@ -78,7 +80,9 @@ class AnnounController {
             .saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile)
         announModel
             .getItems().then(() => {
-                setTimeout(function() { sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
+                $('').append('<div><span>New Ad is successfully added</span></div>').addClass('alert alert-success alert-dismissible');                setTimeout(function() { 
+                    sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
+
             });
     }
     userAnnoun(category, page, id) {
