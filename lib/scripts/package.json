@@ -3,12 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "directories": {
+    "test": "test"
   },
-  "author": "",
+  "scripts": {
+    "test": "mochar"
+  },
+  "author": "pomegranate",
   "license": "ISC",
   "dependencies": {
     "systemjs-plugin-babel": "0.0.21"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "sinon": "^2.2.0",
+    "sinon-chai": "^2.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Telerik-Pomegranate/Announcement.git"
   }
 }
