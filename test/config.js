@@ -1,7 +1,6 @@
-System.config({
-    'transpiler': 'plugin-babel',
-    'map': {
-        'main': '../assets/scripts/app.js',
+SystemJS.config({
+    'transpiler' : 'plugin-babel',
+    'map' : {
         'router': '../config/sammy-config.js',
         'jquery': '../lib/scripts/bower_components/jquery/dist/jquery.js',
         'plugin-babel': '../lib/scripts/node_modules/systemjs-plugin-babel/plugin-babel.js',
@@ -22,12 +21,9 @@ System.config({
         'search':'../assets/scripts/searchNavBar.js',
         'public-announ':'../assets/scripts/publicannoun.js',
         'prevNextPage':'../assets/scripts/navigationPage.js',
-        'eventImageAnnoun':'../assets/scripts/eventImageAnnoun.js'
-    },
-    packages: {
-        '/': {
-            defaultExtension: 'js'
-        }
+        'eventImageAnnoun':'../assets/scripts/eventImageAnnoun.js',
+        'test':'./test.js'
     }
 });
-System.import('main');
+
+System.import('test');
