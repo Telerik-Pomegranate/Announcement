@@ -38,7 +38,7 @@ class UserModel {
     }
     accountUser() {
         let promise = new Promise((resolve, reject) => {
-            let currUser = firebaseDb.getCurrentUser();
+            let currUser = firebaseDb.getCurrentUser(this.database);
             let resultUser;
             let items = {};
             currUser.then(user => {

@@ -35,7 +35,6 @@ let firebaseDb = (function () {
     }
 
     function getCurrentUser(database) {
-        console.log(database);
         let auth = database.auth;
 
         return new Promise(resolve => {
