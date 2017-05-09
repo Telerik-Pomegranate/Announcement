@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-image: url('../../assets/img/Navy-blue-shines-simple-background.jpg');
+    background-image: url('../../assets/img/wood-dark-retro-texture.jpg');
     /*    background-color: #4040A2;*/
     /*background-color: #CECEE5;*/
     background-color: #0E6E94;
@@ -86,3 +86,41 @@ footer {
 .table-striped>tbody>tr:nth-child(even)>th {
    background-color: white;
  }
+
+ .leave-a-msg {
+     width: 400px;
+     margin: 20px;
+     background-image: url('../../assets/img/modern-wood.jpg');
+     border-radius: 5px;
+     
+ }
+ .chats {
+     display: inline-block;
+     width: 500px;
+     background-image: url('../../assets/img/modern-wood.jpg');
+     border-radius: 5px;
+     margin: 20px;
+     overflow: scroll;
+
+ }
+  .sender{
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid GREY;
+    background-color: #D9D9D9;
+ }
+ .col-md-offset-4 {
+    width: 200px;
+    float: right;
+    border-radius: 5px;
+    border: 1px solid GREY;
+    background-color: #D9D9D9
+ }
+ 
+ .msgs {
+     width:500px ; 
+     background-image: url('../../assets/img/modern-wood.jpg'); 
+     margin-left: 20px;
+     border-radius: 5px;
+ }
+
