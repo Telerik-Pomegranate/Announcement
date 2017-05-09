@@ -16,7 +16,6 @@ class UserModel {
         try {
             validator.validateSignUpForm(email, password, username);
         } catch (error) {
-            console.log('eee', error)
             return Promise.reject({ code: '500', message: error });
         }
 

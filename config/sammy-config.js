@@ -16,7 +16,6 @@ const router = (function() {
                 this.redirect('#/home');
             });
             this.get('#/home', function() {
-                // templates.load('home').then(templateHTML => { $('#main').html(templateHTML); });
                 announController.getThreeAnnounEveryCategory();
             });
             this.get('/login', function() {
@@ -38,7 +37,7 @@ const router = (function() {
             this.post('#/deleteAnnouncement/:id', function(sammy) {
                 announController.removeAnnouncement(sammy)
             });
-            this.get('#/leaveamsg/:id/:category' , msgController.leaveMsg)
+            this.get('#/leaveamsg/:id/:category', msgController.leaveMsg)
             this.post('#/sendamsg/:id/:category', msgController.sendMsg)
             this.get('#/chats/:category', msgController.getChats)
             this.get('#/chats/msgs/:msgId', msgController.getMsgs)

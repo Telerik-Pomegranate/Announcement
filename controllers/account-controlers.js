@@ -13,7 +13,6 @@ class AccountController {
     signIn(sammy) {
         let email = sammy.params.email;
         let password = sammy.params.password;
-        let username = sammy.params.username;
         userModel
             .signIn(email, password)
             .then(() => {}).then(() => {
