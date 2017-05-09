@@ -1,4 +1,3 @@
-//import Sammy from 'sammy';
 import 'jquery';
 import router from 'router';
 import firebaseDb from '../../database/firebas-databas';

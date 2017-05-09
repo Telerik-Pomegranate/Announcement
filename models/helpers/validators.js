@@ -15,19 +15,20 @@ let validator = (function() {
     };
 
     function validateUsername(username) {
-        // console.log('vleze')
-        if (!PATTERNS.USER_NAME_PATTERN.test(username)) {
-            //console.log('greshkat')
+        if (!PATTERNS.USER_NAME_PATTERN.test(username)) {     
             throw MESSAGES.INVALID_USERNAME_MESSAGE;
         }
     }
 
     function validateEmail(email) {
-        //  console.log('vlezeememememeail ')
-
-        if (!PATTERNS.EMAIL_PATTERN.test(email)) {
-            //   console.log('vleze greshka emial')
+        if (!PATTERNS.EMAIL_PATTERN.test(email)) {     
             throw MESSAGES.INVALID_EMAIL_MESSAGES;
+        }
+    }
+
+    function validatePassword(password) {
+        if (!PATTERNS.PASSWORD_PATTERN.test(password)) {
+            throw MESSAGES.INVALID_PASSWORD_MESSAGE;
         }
     }
 
@@ -35,6 +36,7 @@ let validator = (function() {
 
         validateUsername(username);
         validateEmail(email);
+        validatePassword(password);
 
     }
 
@@ -42,6 +44,7 @@ let validator = (function() {
         validateSignUpForm,
         validateUsername,
         validateEmail,
+        validatePassword
     }
 }());
 
