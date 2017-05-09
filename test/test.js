@@ -67,9 +67,6 @@ describe('User model tests', () => {
             signStub.restore();
             encryptStub.restore();
         })
-    });
-
-    describe('sign in tests', () => {
         it('sign in calls firebaseDb method signWithEmail once', (done) => {
             let db = sinon.mock(firebaseModule);
             let encryptStub = sinon.stub(encryptor, 'encrypt');
@@ -85,6 +82,19 @@ describe('User model tests', () => {
         })
     });
 
+    describe('sign in tests', () => {
+        it('sign in calls firebaseDb method signOut once', (done) => {
+            let db = sinon.mock(firebaseModule);
+            let signStub = sinon.stub(firebaseDb, 'signOut')
+                .returns(Promise.resolve());
+            let newUser = new userModel(db);
+            newUser.signOut()
+                .then(expect(signStub).to.have.been.calledOnce)
+                .then(done, done);
+
+            signStub.restore();
+        })
+    });
 });
 
 describe('data layer tests', () => {
