@@ -5,9 +5,10 @@ import firebaseDb from '../../database/firebas-databas';
 import firebaseModule from 'firebase-config';
 import search from 'search';
 $(document).ready(function() {
+    const database = firebaseModule;
     router.start();
     search.start();
-    firebaseDb.onAuthStateChanged(user => {
+    firebaseDb.onAuthStateChanged(database, user => {
         if (user) {
 
             localStorage.setItem('username', user.displayName);

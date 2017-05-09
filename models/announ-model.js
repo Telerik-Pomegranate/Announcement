@@ -1,5 +1,6 @@
 import firebaseModule from 'firebase-config';
 import userModel from 'user-model';
+
 class AnnounModel {
 
     getItems() {
@@ -53,7 +54,8 @@ class AnnounModel {
     }
 
     saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile) {
-
+        let user = new userModel(firebaseModule);
+console.log(user.accountInfo);
         let categoryRef = firebaseModule.database.child(category);
         let homeKey = categoryRef.push();
         var key = homeKey.key;
@@ -61,7 +63,7 @@ class AnnounModel {
         let userName;
         let email;
         var obj = {};
-        userModel.accountInfo().then((user) => {
+        user.accountInfo().then((user) => {
             userId = user.uid;
             userName = user.displayName;
             email = user.email;

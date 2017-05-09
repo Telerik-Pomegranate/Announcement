@@ -4,6 +4,8 @@ import Handlebars from 'handlebars';
 import navigationPage from 'prevNextPage';
 import eventImageAnnoun from 'eventImageAnnoun';
 import firebaseDb from 'firebase-database';
+import firebaseModule from 'firebase-config';
+
 class AnnounController {
     allItems(category, page) {
         let clicedPage = +page;
@@ -117,7 +119,7 @@ class AnnounController {
     }
     removeAnnouncement(sammy) {
         announModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
-            firebaseDb.getChild(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
+            firebaseDb.getChild(idRemoveAnnoun[0].announCategory, firebaseModule).child(idRemoveAnnoun[0].idAnnoun.id).remove();
         }).catch(err => alert(err))
         sammy.redirect(`#/user-account/1`)
     }
