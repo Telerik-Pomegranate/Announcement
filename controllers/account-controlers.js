@@ -4,7 +4,9 @@ import templates from 'templates';
 import Handlebars from 'handlebars';
 import announModel from 'announ-model';
 import navigationPage from 'prevNextPage';
+import firebaseModule from 'firebase-config';
 
+const user = new userModel(firebaseModule);
 class AccountController {
     load(sammy) {
         sammy.redirect('#/login');
@@ -14,7 +16,7 @@ class AccountController {
         let email = sammy.params.email;
         let password = sammy.params.password;
         let username = sammy.params.username;
-        userModel
+        user
             .signIn(email, password)
             .then(() => {}).then(() => {
                 return new Promise(resolve => {
@@ -40,7 +42,7 @@ class AccountController {
         let username = sammy.params.username;
         let email = sammy.params.email;
         let password = sammy.params.password;
-        userModel
+        user
             .signUp(email, password, username)
             .then(() => {}).then(() => {
                 return new Promise(resolve => {
@@ -62,7 +64,7 @@ class AccountController {
             });
     }
     signOut(sammy) {
-        userModel
+        user
             .signOut()
             .then(() => {}).then(() => {
                 return new Promise(resolve => {
@@ -82,7 +84,7 @@ class AccountController {
         page = +page;
         let items = {};
         let displayItems;
-        userModel.accountUser().then((user) => {
+        user.accountUser().then((user) => {
             items = user;
             displayItems = user.items.slice();
             items.user = user.user;

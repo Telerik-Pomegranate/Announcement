@@ -4,6 +4,8 @@ import Handlebars from 'handlebars';
 import navigationPage from 'prevNextPage';
 import eventImageAnnoun from 'eventImageAnnoun';
 import firebaseDb from 'firebase-database';
+import firebaseModule from 'firebase-config';
+
 class AnnounController {
     allItems(category, page) {
         let clicedPage = +page;
@@ -57,7 +59,7 @@ class AnnounController {
         return announModel.getById(currId, category).then(function(res) {
             ad = res;
 
-            return templates.load('announcement'); //-items tepleita-to sushto raboti s promisi- //towa handlebars za da e po qsno go pravim
+            return templates.load('announcement');
         }).then((templateHTML) => {
             let template = Handlebars.compile(templateHTML);
             $('#main').html(template({
@@ -80,8 +82,10 @@ class AnnounController {
             .saveAnnoun(category, url, otherUrl, heading, price, subHeading, body, mobile)
         announModel
             .getItems().then(() => {
-                $('').append('<div><span>New Ad is successfully added</span></div>').addClass('alert alert-success alert-dismissible');                setTimeout(function() { 
-                    sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`) }, 1000);
+                $('').append('<div><span>New Ad is successfully added</span></div>').addClass('alert alert-success alert-dismissible');
+                setTimeout(function() {
+                    sammy.redirect(`#/${category.toLowerCase()}/announcement/${userObj.key}`)
+                }, 1000);
 
             });
     }
@@ -117,7 +121,7 @@ class AnnounController {
     }
     removeAnnouncement(sammy) {
         announModel.removeAnnouncement(sammy.params.id).then((idRemoveAnnoun) => {
-            firebaseDb.getChild(idRemoveAnnoun[0].announCategory).child(idRemoveAnnoun[0].idAnnoun.id).remove();
+            firebaseDb.getChild(idRemoveAnnoun[0].announCategory, firebaseModule).child(idRemoveAnnoun[0].idAnnoun.id).remove();
         }).catch(err => alert(err))
         sammy.redirect(`#/user-account/1`)
     }

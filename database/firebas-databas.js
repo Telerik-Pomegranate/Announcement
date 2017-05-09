@@ -1,42 +1,62 @@
 import firebaseModule from 'firebase-config';
 
-let firebaseDb = (function() {
-    let database = firebaseModule.database;
-    let auth = firebaseModule.auth;
+let firebaseDb = (function () {
 
-    function getChild(child) {
-        return database.child(child);
+    function getChild(child, database) {
+        let db = database.database;
+        return db.child(child);
     }
 
-    function createUserWithEmail(email, password, username) {
+    function createUserWithEmail(email, password, username, database) {
+        let auth = database.auth;
         return auth.createUserWithEmailAndPassword(email, password)
-            .then(() => this.getCurrentUser())
+            .then(() => this.getCurrentUser(database))
             .then(user => {
+                console.log(auth);
+
                 user.updateProfile({ displayName: username });
                 localStorage.setItem('username', username);
                 localStorage.setItem('userUid', user.uid);
-                console.log(user);
             })
             .catch(error => Promise.reject(error));
     }
 
-    function signInWithEmail(email, password) {
+    function signInWithEmail(email, password, database) {
+        let auth = database.auth;
+
         return auth.signInWithEmailAndPassword(email, password)
             .catch(error => Promise.reject(error));
     }
 
-    function signOut() {
+    function signOut(database) {
+        let auth = database.auth;
+
         return auth.signOut();
     }
 
-    function getCurrentUser() {
+    function getCurrentUser(database) {
+        console.log(database);
+        let auth = database.auth;
+
         return new Promise(resolve => {
+
+
             auth.onAuthStateChanged(userInfo => resolve(userInfo));
         });
     }
 
-    function onAuthStateChanged(callback) {
-        return auth.onAuthStateChanged(function(user) {
+    function onAuthStateChanged(database, callback) {
+        let auth = database.auth;
+
+        return auth.onAuthStateChanged(function (user) {
+            callback(user); nAuthStateChanged(userInfo => resolve(userInfo));
+        });
+    }
+
+    function onAuthStateChanged(database, callback) {
+        let auth = database.auth;
+
+        return auth.onAuthStateChanged(function (user) {
             callback(user);
         });
     }

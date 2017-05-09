@@ -2,12 +2,15 @@ import firebaseDb from 'firebase-database';
 import validator from 'validator';
 import encryptor from 'encryptor';
 import announModel from 'announ-model';
-class UserModel {
 
+class UserModel {
+    constructor(database) {
+        this.database = database;
+    }
     signIn(email, password) {
         password = encryptor.encrypt(password);
 
-        return firebaseDb.signInWithEmail(email, password)
+        return firebaseDb.signInWithEmail(email, password, this.database)
             .catch(error => Promise.reject(error));
     }
 
@@ -16,22 +19,21 @@ class UserModel {
         try {
             validator.validateSignUpForm(email, password, username);
         } catch (error) {
-            console.log('eee', error)
             return Promise.reject({ code: '500', message: error });
         }
 
         password = encryptor.encrypt(password);
 
-        return firebaseDb.createUserWithEmail(email, password, username)
+        return firebaseDb.createUserWithEmail(email, password, username, this.database)
             .catch(error => Promise.reject(error));
     }
 
     signOut() {
-        return firebaseDb.signOut()
+        return firebaseDb.signOut(this.database)
             .catch(error => Promise.reject(error));
     }
     accountInfo() {
-        return firebaseDb.getCurrentUser()
+        return firebaseDb.getCurrentUser(this.database)
             .catch(error => Promise.reject(error));
     }
     accountUser() {
@@ -62,5 +64,4 @@ class UserModel {
     }
 }
 
-const userModel = new UserModel();
-export default userModel;
+export default UserModel;
