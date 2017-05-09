@@ -84,6 +84,7 @@ class AccountController {
         page = +page;
         let items = {};
         let displayItems;
+        debugger
         user.accountUser().then((user) => {
             items = user;
             displayItems = user.items.slice();

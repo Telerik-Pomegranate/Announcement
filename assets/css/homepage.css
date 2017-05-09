@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-image: url('../../assets/img/wood-dark-retro-texture.jpg');
+    background-image: url('../../assets/img/blue-wood-background.jpg');
     /*    background-color: #4040A2;*/
     /*background-color: #CECEE5;*/
     background-color: #0E6E94;
@@ -77,50 +77,52 @@ footer {
     padding: 10px 40px 60px;
     margin: 10px 0px 60px;
     border: 1px solid GREY;
-} 
-.table-striped>tbody>tr:nth-child(odd)>td, 
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: GREY;
- }
-.table-striped>tbody>tr:nth-child(even)>td, 
+    background-color: GREY;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
-   background-color: white;
- }
+    background-color: white;
+}
 
- .leave-a-msg {
-     width: 400px;
-     margin: 20px;
-     background-image: url('../../assets/img/modern-wood.jpg');
-     border-radius: 5px;
-     
- }
- .chats {
-     display: inline-block;
-     width: 500px;
-     background-image: url('../../assets/img/modern-wood.jpg');
-     border-radius: 5px;
-     margin: 20px;
-     overflow: scroll;
+.leave-a-msg {
+    width: 400px;
+    margin: 20px;
+    background-image: url('../../assets/img/modern-wood.jpg');
+    border-radius: 5px;
+}
 
- }
-  .sender{
+.chats {
+    display: inline-block;
+    width: 500px;
+    background-image: url('../../assets/img/modern-wood.jpg');
+    border-radius: 5px;
+    margin: 20px;
+    overflow: scroll;
+}
+
+.sender {
     width: 200px;
     border-radius: 5px;
     border: 1px solid GREY;
     background-color: #D9D9D9;
- }
- .col-md-offset-4 {
+}
+
+.col-md-offset-4 {
     width: 200px;
     float: right;
     border-radius: 5px;
     border: 1px solid GREY;
     background-color: #D9D9D9
- }
- 
- .msgs {
-     width:500px ; 
-     background-image: url('../../assets/img/modern-wood.jpg'); 
-     margin-left: 20px;
-     border-radius: 5px;
- }
+}
 
+.msgs {
+    width: 500px;
+    background-image: url('../../assets/img/modern-wood.jpg');
+    margin-left: 20px;
+    border-radius: 5px;
+}
